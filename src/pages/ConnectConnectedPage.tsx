@@ -6,7 +6,7 @@ import { useTranslation } from '../i18n/useTranslation'
 import { LanguageSwitch } from '../components/common/LanguageSwitch'
 import logoFull from '../assets/logo-full.svg'
 
-const successAsset = 'http://localhost:3845/assets/077a5315c32ae62b495b366fb414f11c8bbee23e.svg'
+const successAsset = '/success-check.svg'
 
 export function ConnectConnectedPage() {
   const navigate = useNavigate()

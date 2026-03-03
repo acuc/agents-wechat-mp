@@ -5,7 +5,7 @@ import { useTranslation } from '../i18n/useTranslation'
 import { LanguageSwitch } from '../components/common/LanguageSwitch'
 import logoFull from '../assets/logo-full.svg'
 
-const spinnerAsset = 'http://localhost:3845/assets/42cb551374fa1e4542bdf789585437d2fb062948.svg'
+const spinnerAsset = '/spinner.svg'
 
 export function ConnectSigningInPage() {
   const navigate = useNavigate()

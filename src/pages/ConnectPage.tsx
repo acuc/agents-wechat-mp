@@ -6,7 +6,7 @@ import { useTranslation } from '../i18n/useTranslation'
 import { LanguageSwitch } from '../components/common/LanguageSwitch'
 import logoFull from '../assets/logo-full.svg'
 
-const qrCodeAsset = 'http://localhost:3845/assets/655066b3823f501f5e325a1a6eec88df3b8b8993.svg'
+const qrCodeAsset = '/qr-code.svg'
 
 export function ConnectPage() {
   const navigate = useNavigate()

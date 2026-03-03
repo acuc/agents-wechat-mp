@@ -6,7 +6,7 @@ import type { Payment } from '../types/domain'
 import { payments } from '../mocks/payments'
 import '../styles/pages/LinkPaymentPage.css'
 
-const successAsset = 'http://localhost:3845/assets/077a5315c32ae62b495b366fb414f11c8bbee23e.svg'
+const successAsset = '/success-check.svg'
 
 function formatAmount(amount: number): string {
   return amount.toLocaleString('en-AU', {

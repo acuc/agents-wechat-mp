@@ -5,12 +5,11 @@ import { PaymentListItem } from '../components/payments/PaymentListItem'
 import { payments } from '../mocks/payments'
 import { IconGlyph } from '../components/common/IconGlyph'
 import { useTranslation } from '../i18n/useTranslation'
+import fallbackBanner from '../assets/banner.png'
 import '../styles/pages/HomePage.css'
 
 const placeholderCompanies = ['Horizon Global HQ', 'Pacific Education Partners', 'Asia Student Services']
-
-const homeAvatar = 'http://localhost:3845/assets/b79c327e8d88f20089c8832909afc540bd071505.png'
-const fallbackBanner = 'http://localhost:3845/assets/0050d6b9f7f8a6377a41d412d75da4ba30e3012b.png'
+const homeAvatar = '/avatar.svg'
 const bannerModules = import.meta.glob('../assets/banner*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
   import: 'default',

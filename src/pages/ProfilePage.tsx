@@ -6,7 +6,7 @@ import { profile } from '../mocks/profile'
 import { useAppStore } from '../store/useAppStore'
 import { useTranslation } from '../i18n/useTranslation'
 
-const profileAvatar = 'http://localhost:3845/assets/b79c327e8d88f20089c8832909afc540bd071505.png'
+const profileAvatar = '/avatar.svg'
 
 export function ProfilePage() {
   const navigate = useNavigate()
