@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from '../i18n/useTranslation'
 import type { Payment } from '../types/domain'
 import { payments } from '../mocks/payments'
+import checkmark from '../assets/login/checkmark.svg'
 import '../styles/pages/LinkPaymentPage.css'
-
-const successAsset = '/success-check.svg'
 
 function formatAmount(amount: number): string {
   return amount.toLocaleString('en-AU', {
@@ -217,7 +216,7 @@ export function LinkPaymentPage() {
       {showLinked && foundPayment && (
         <section className="link-payment-card link-payment-success-card">
           <h2 className="link-payment-card-title">{t('linkPayment.paymentLinked')}</h2>
-          <img alt="" src={successAsset} className="link-payment-success-icon" />
+          <img alt="" src={checkmark} className="link-payment-success-icon" />
           <div className="link-payment-kv-list">
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.paymentId')}</span>

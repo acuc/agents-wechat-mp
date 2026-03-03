@@ -5,8 +5,7 @@ import { useAppStore } from '../store/useAppStore'
 import { useTranslation } from '../i18n/useTranslation'
 import { LanguageSwitch } from '../components/common/LanguageSwitch'
 import logoFull from '../assets/logo-full.svg'
-
-const successAsset = '/success-check.svg'
+import checkmark from '../assets/login/checkmark.svg'
 
 export function ConnectConnectedPage() {
   const navigate = useNavigate()
@@ -27,7 +26,7 @@ export function ConnectConnectedPage() {
       <img alt="Flywire logo" className="connect-logo" src={logoFull} />
       <p className="muted center login-subtitle">{t('connect.subtitle')}</p>
       <section className="status-stage">
-        <img alt="Connected success" className="status-graphic" src={successAsset} />
+        <img alt="Connected success" className="status-graphic" src={checkmark} />
         <p className="status-copy success">{t('connect.connected')}</p>
       </section>
     </main>
