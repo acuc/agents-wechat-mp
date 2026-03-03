@@ -1,5 +1,4 @@
 import { useAppStore } from '../../store/useAppStore'
-import type { Locale } from '../../i18n/translations'
 
 interface LanguageSwitchProps {
   className?: string

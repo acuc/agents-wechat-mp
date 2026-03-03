@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { getTranslation, type Locale } from './translations'
+import { getTranslation } from './translations'
 
 export function useTranslation() {
   const locale = useAppStore((s) => s.locale)
