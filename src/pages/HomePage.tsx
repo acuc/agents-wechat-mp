@@ -6,10 +6,11 @@ import { payments } from '../mocks/payments'
 import { IconGlyph } from '../components/common/IconGlyph'
 import { useTranslation } from '../i18n/useTranslation'
 import fallbackBanner from '../assets/banner.png'
+import userAvatar from '../assets/userAvatar.png'
 import '../styles/pages/HomePage.css'
 
 const placeholderCompanies = ['Horizon Global HQ', 'Pacific Education Partners', 'Asia Student Services']
-const homeAvatar = '/avatar.svg'
+const homeAvatar = userAvatar
 const bannerModules = import.meta.glob('../assets/banner*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
   import: 'default',
@@ -159,7 +160,7 @@ export function HomePage() {
           </div>
           <ChevronRight size={24} style={{ color: 'var(--text-dark)' }} />
         </Link>
-        <Link className="quick-link orange" to="/payments">
+        <Link className="quick-link orange" to="/payments/link">
           <div className="quick-link-left">
             <div className="quick-link-icon orange">
               <IconGlyph name="Link" size={28} strokeWidth={2} />

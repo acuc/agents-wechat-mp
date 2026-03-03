@@ -5,8 +5,9 @@ import { ProfileMenuList } from '../components/profile/ProfileMenuList'
 import { profile } from '../mocks/profile'
 import { useAppStore } from '../store/useAppStore'
 import { useTranslation } from '../i18n/useTranslation'
+import userAvatar from '../assets/userAvatar.png'
 
-const profileAvatar = '/avatar.svg'
+const profileAvatar = userAvatar
 
 export function ProfilePage() {
   const navigate = useNavigate()
