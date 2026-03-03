@@ -1,0 +1,137 @@
+/* Fixed top bar: status bar + app bar. Uses app font throughout. */
+
+.mobile-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.mobile-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem 0.4rem 1.6rem;
+  min-height: 2.8rem;
+  font-family: inherit;
+}
+
+.mobile-status-time,
+.mobile-status-5g {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.mobile-status-notch-spacer {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 13rem;
+  height: 2.8rem;
+  pointer-events: none;
+}
+
+.mobile-status-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mobile-status-icon,
+.mobile-status-battery {
+  color: var(--text-dark);
+}
+
+.mobile-status-battery {
+  color: var(--brand-blue);
+}
+
+.mobile-app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.6rem 1.2rem;
+  border-bottom: 0.1rem solid var(--line-grey);
+  background: linear-gradient(#fafafa 0%, #fff 100%);
+}
+
+.mobile-app-bar-left {
+  min-width: 0;
+  flex: 1;
+}
+
+.mobile-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.mobile-back-link:hover {
+  color: var(--brand-blue);
+}
+
+.mobile-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.mobile-brand-mark {
+  width: 1.7rem;
+  height: 2.4rem;
+  object-fit: contain;
+}
+
+.mobile-brand-label {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-dark);
+}
+
+.mobile-app-bar-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-dark);
+}
+
+.mobile-lang-switch {
+  display: flex;
+  padding: 0.2rem 0.2rem;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid var(--line-grey);
+  background: #fff;
+}
+
+.mobile-lang-switch span,
+.mobile-lang-switch button {
+  display: flex;
+  padding: 0.8rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-grey);
+  border-radius: 0.4rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mobile-lang-switch .active {
+  background: var(--brand-blue);
+  color: #fff;
+}

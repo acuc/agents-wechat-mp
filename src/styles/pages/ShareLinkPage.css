@@ -1,0 +1,219 @@
+/* Share link – product list, share sheet */
+
+.product-row {
+  width: 100%;
+  border: 0;
+  border-bottom: 0.1rem solid var(--line-grey);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  padding: 1.4rem 0;
+  text-align: left;
+}
+.product-row:hover {
+  background: var(--bg-light);
+}
+.product-row:last-of-type {
+  border-bottom: none;
+}
+
+.product-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 0.4rem;
+  background: var(--bg-light);
+  display: flex;
+  place-items: center;
+  color: var(--brand-blue);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.product-icon-image {
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display: block;
+}
+
+.product-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.product-copy .muted {
+  margin: 0;
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Sheet is rendered inside .mobile-app so overlay is contained within the app/phone bounds */
+.sheet-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: flex-end;
+  z-index: 100;
+  isolation: isolate;
+  opacity: 0;
+  transition: opacity 0.28s ease-out;
+}
+
+.sheet-overlay--visible {
+  opacity: 1;
+}
+
+.sheet-overlay--exiting {
+  opacity: 0;
+}
+
+.share-sheet {
+  width: 100%;
+  background: #fff;
+  border-radius: 1.6rem 1.6rem 0 0;
+  padding: 0 1.4rem 3.2rem;
+  padding-top: 0.8rem;
+  transform: translateY(100%);
+  transition: transform 0.28s ease-out;
+}
+
+.sheet-overlay--visible .share-sheet {
+  transform: translateY(0);
+}
+
+.sheet-overlay--exiting .share-sheet {
+  transform: translateY(100%);
+}
+
+.sheet-handle {
+  width: 3.6rem;
+  height: 0.4rem;
+  border-radius: 0.2rem;
+  background: var(--line-grey);
+  margin: 0 auto 1.2rem;
+  flex-shrink: 0;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.sheet-header h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.sheet-card {
+  border: 0.1rem solid var(--line-grey);
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  margin: 0 0 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  background:var(--bg-light);
+}
+
+.sheet-card-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  padding:0.4rem;
+  border-radius: 0.4rem;
+  background: var(--bg-light);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.sheet-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.sheet-card-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.sheet-card-copy .sheet-card-name {
+  margin: 0 0 0.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.sheet-card-copy .sheet-card-desc {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-grey);
+  line-height: 1.35;
+}
+
+.sheet-card-copy .sheet-card-agent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.6rem 0 0;
+  font-size: 1.2rem;
+  color: var(--text-grey);
+}
+
+.sheet-card-copy .sheet-card-agent-mark {
+  width: 1.4rem;
+  height: 2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.share-sheet .primary-btn {
+  margin: 0;
+}
+
+.share-sheet .share-sheet-share-btn:hover {
+  background: #0d5a9e;
+}
+/* .section-title {
+  background: #fafafa;
+} */
+ .section-header.share-link-header {
+  background: transparent;
+  padding:0.8rem;
+ }
+.section-title.share-link-header {
+  border-radius: 0.8rem;
+}
+.info-box {
+  font-size: 1.4rem;
+  border:none;
+}
+.card.referral-products {
+  border:none;
+  margin-top:2.4rem;
+}

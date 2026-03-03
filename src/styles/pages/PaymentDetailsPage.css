@@ -1,0 +1,137 @@
+/* Payment details – summary, key-value rows, timeline */
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.summary .status-pill {
+  margin-bottom: 0.6rem;
+}
+
+.summary h1 {
+  margin: 0.6rem 0;
+  font-size: 5rem;
+}
+
+.summary .muted {
+  font-size: 1.3rem;
+}
+
+.kv-row {
+  border-top: 0.1rem solid var(--line-grey);
+  padding: 1.2rem 1.4rem;
+  align-items: center;
+}
+
+.timeline {
+  padding: 0.8rem 1.4rem 1.6rem;
+}
+
+.timeline-row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  position: relative;
+}
+
+.timeline-row:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 2.6rem; /* 0.2rem gap below dot (dot ends at 2.4rem from row top) */
+  width: 0.1rem;
+  height: calc(100% - 1.6rem); /* end 0.2rem above next dot */
+  background: #c7ddd0;
+}
+
+.timeline-dot {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: #268257;
+  margin-top: 0.4rem;
+  flex-shrink: 0;
+}
+
+.timeline-dot--green {
+  background: #268257;
+}
+
+.timeline-dot--gray {
+  background: #d9d9d9;
+}
+
+.timeline-dot--red {
+  background: #c53030;
+}
+
+.timeline-dot--darkGray {
+  background: #6b7280;
+}
+
+.timeline-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.timeline-step-label {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-step-time {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  color: var(--text-grey);
+}
+
+.timeline-row--pending .timeline-step-label,
+.timeline-row--pending .timeline-step-time {
+  color: #6b7280;
+}
+
+.timeline-actions {
+  padding: 0 1.4rem 1.6rem;
+}
+
+.btn-contact-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  background: #c53030;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.btn-contact-support:hover {
+  background: #9b2226;
+}
+
+.section-title{
+  background:var(--bg-light);
+  padding: 1.2rem 1.6rem;
+}
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+}
+.kv-row .muted {
+  font-size: 1.4rem;
+}

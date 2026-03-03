@@ -1,0 +1,120 @@
+/* WeChat-style chat: green sent bubbles (right), empty message list with one card message */
+
+.page.share-link-chat-page {
+  padding: 0;
+}
+
+.share-link-chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: #ededed;
+}
+
+.wechat-chat-messages {
+  flex: 1;
+  overflow: auto;
+  padding: 1.2rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.wechat-message {
+  max-width: 85%;
+  margin-bottom: 1.2rem;
+}
+
+.wechat-message--sent {
+  align-self: flex-end;
+}
+
+.wechat-bubble {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.8rem;
+  position: relative;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+}
+
+.wechat-bubble--sent {
+  background: #95ec69;
+  border-top-right-radius: 0.2rem;
+}
+
+.wechat-card-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  min-width: 0;
+  padding: 0.4rem 0;
+}
+
+.wechat-card-message-icon {
+  width: 4rem;
+  height: 4rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.6);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.wechat-card-message-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.wechat-card-message-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.wechat-card-message-name {
+  margin: 0 0 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.wechat-card-message-desc {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-grey);
+  line-height: 1.35;
+}
+
+.wechat-card-message-agent {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+  font-size: 1.1rem;
+  color: var(--text-grey);
+}
+
+.wechat-card-message-agent-mark {
+  width: 1.2rem;
+  height: 1.6rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.wechat-chat-input-wrap {
+  flex-shrink: 0;
+  padding: 0.8rem 1.6rem 1.6rem;
+  background: #f7f7f8;
+  border-top: 0.1rem solid #e0e0e0;
+}
+
+.wechat-chat-input-placeholder {
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border-radius: 0.8rem;
+  font-size: 1.3rem;
+  color: var(--text-grey);
+  text-align: center;
+}

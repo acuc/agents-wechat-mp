@@ -1,0 +1,233 @@
+/* Home page – welcome, banner, quick links, recent payments */
+
+.welcome-row-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.welcome-row {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  border-bottom: 0.1rem solid var(--line-grey);
+  padding: 1.6rem 0;
+}
+
+.welcome-chevron-btn {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-selector-popover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 0.4rem;
+  width: 100%;
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+  padding: 0.4rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.company-selector-popover .company-selector-option {
+  border: 0;
+  border-radius: 0.6rem;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  padding: 0.8rem 0.8rem;
+  font-size: 1.4rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.company-selector-popover .company-selector-option:hover {
+  background: #eee;
+}
+
+.company-selector-popover .company-selector-option.active {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+.welcome-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.welcome-title {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.welcome-light {
+  font-weight: 400;
+}
+
+.welcome-strong {
+  font-weight: 500;
+}
+
+.home-banner {
+  margin-top: 1.6rem;
+  position: relative;
+  height: 14.4rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.home-banner-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.home-banner-slide {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.home-banner-slide .home-banner-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.home-banner-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  min-height: 0.8rem;
+}
+
+.home-banner-dots span {
+  height: 0.8rem;
+  border-radius: 99.9rem;
+  background: #a8d4f3;
+  width: 0.8rem;
+  transition: width 0.35s ease-out, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.home-banner-dots span.active {
+  width: 2.4rem;
+  background: #1274c4;
+}
+
+.quick-links {
+  margin-top: 2.4rem;
+}
+
+.quick-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin: 0.8rem 0;
+  padding: 1.4rem;
+  border-radius: 0.4rem;
+  transition: background-color 180ms ease;
+}
+
+.quick-link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.quick-link-content .quick-link-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin:0;
+  padding:0;
+}
+.quick-link.blue {
+  background: #e9f2fb;
+}
+
+.quick-link.green {
+  background: #ecf5e9;
+}
+
+.quick-link.orange {
+  background: #fff4e8;
+}
+
+.quick-link.blue:hover {
+  background: #dce8f6;
+}
+
+.quick-link.green:hover {
+  background: #e0eddc;
+}
+
+.quick-link.orange:hover {
+  background: #f4eadf;
+}
+
+.quick-link-left {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.quick-link-icon {
+  color: #1274c4;
+}
+
+.quick-link-icon.green {
+  color: #268257;
+}
+
+.quick-link-icon.orange {
+  color: #ff941a;
+}
+
+.section-title.quick-links-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text-grey);
+  background-color:#fff;
+}
+
+.quick-link-description {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-grey);
+}
+
+.recent-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #1274c4;
+  font-size: 1.4rem;
+}
+.card.recent-payments {
+margin-top:3.2rem;
+}

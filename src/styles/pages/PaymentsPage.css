@@ -1,0 +1,111 @@
+/* Payments page – search, filter row, filter popover, link payment button */
+
+.search-row {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 1.2rem;
+  border: 0.1rem solid var(--line-grey);
+  border-radius: 0.4rem;
+}
+
+.search-row input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  font-weight: 400;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  align-self: stretch;
+  width:100%;
+}
+
+.filter-row-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-grow: 1;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-row button,
+.filter-row-scroll button,
+.filter-popover button {
+  border: 0;
+  border-radius: 0.6rem;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  padding: 0.8rem 0.8rem;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.filter-row-more {
+  flex-shrink: 0;
+}
+
+.filter-row .active,
+.filter-row-scroll .active,
+.filter-popover .active {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+.filter-popover {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.4rem;
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+  padding: 0.4rem;
+  z-index: 10;
+  min-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+
+
+.filter-row-wrap {
+  position: relative;
+  width:100%;
+}
+
+.link-payment-btn {
+  width: 100%;
+  background: #fff4e8;
+  margin-top: 1rem;
+  border: 0.1rem solid var(--line-grey);
+  border-radius: 0.4rem;
+  color: var(--text-dark);
+  font-weight: 400;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.link-payment-btn:hover {
+  background: #ffecd6;
+}

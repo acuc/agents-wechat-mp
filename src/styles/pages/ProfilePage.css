@@ -1,0 +1,63 @@
+/* Profile – menu list, linked state */
+
+.profile-menu .menu-item {
+  border: 0;
+  border-bottom: 0.1rem solid var(--line-grey);
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-dark);
+}
+.profile-menu .menu-item:last-of-type {
+  border-bottom: none;
+}
+
+.menu-left,
+.menu-right {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.linked {
+  color: #00a65a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.profile-name-email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.linked {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* Logout button – same styling as Contact support (red) */
+.page.with-tabs .logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  background: #c53030;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.page.with-tabs .logout-btn:hover {
+  background: #9b2226;
+}
