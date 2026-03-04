@@ -96,54 +96,81 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  align-items: center;
 }
 
-.qr-code-hitbox {
-  border: 0;
-  background: #fff;
-  padding: 2.4rem;
-  width: 100%;
-  cursor: pointer;
-  display: block;
-}
-
-.qr-code-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  display: block;
-  transition: opacity 180ms ease;
-}
-
-.qr-code-hitbox:hover .qr-code-image {
-  opacity: 0.65;
-}
 .qr-instructions {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  padding:1.6rem;
+  padding: 1.6rem;
+  text-align: center;
+  width: 100%;
 }
+
 .qr-title {
   font-size: 1.8rem;
   line-height: 1;
   font-weight: 500;
   color: #1b2733;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .qr-steps {
-  margin: 0;
-  padding-left: 2.4rem;
+  margin: 0 auto;
+  padding:1.6rem 4rem;
+  max-width: 100%;
   display: grid;
   gap: 1.6rem;
   color: #1b2733;
   font-size: 1.4rem;
+  text-align: left;
+  list-style-position: outside;
 }
 
 .qr-steps li::marker {
   color: #5a687b;
+}
+
+.qr-step-link {
+  color: var(--brand-blue);
+  text-decoration: underline;
+  cursor: default;
+}
+
+.qr-step-link:hover {
+  color: #0d5a9e;
+}
+
+/* QR flow: push simulate button to bottom of page */
+.connect-page--qr {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.connect-qr-bottom {
+  margin-top: auto;
+  padding: 2rem 0 2.4rem;
+  width: 100%;
+}
+
+.connect-simulate-btn {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-grey);
+  background: #fff;
+  border: 0.1rem solid var(--line-grey);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.connect-simulate-btn:hover {
+  background: var(--bg-light);
 }
 
 .credentials-panel-v2 {

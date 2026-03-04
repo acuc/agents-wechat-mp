@@ -6,8 +6,6 @@ import { useTranslation } from '../i18n/useTranslation'
 import { LanguageSwitch } from '../components/common/LanguageSwitch'
 import logoFull from '../assets/logo-full.svg'
 
-const qrCodeAsset = '/qr-code.svg'
-
 export function ConnectPage() {
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -31,7 +29,9 @@ export function ConnectPage() {
   }
 
   return (
-    <main className="page app-scroll connect-page login-flow-page">
+    <main
+      className={`page app-scroll connect-page login-flow-page${connectMethod === 'qr' ? ' connect-page--qr' : ''}`}
+    >
       <div className="login-lang-wrap">
         <LanguageSwitch />
       </div>
@@ -64,19 +64,28 @@ export function ConnectPage() {
       </div>
 
       {connectMethod === 'qr' ? (
-        <section className="qr-panel-v2">
-          <button className="qr-code-hitbox" onClick={continueFlow} type="button">
-            <img alt="Scan QR code" className="qr-code-image" src={qrCodeAsset} />
-          </button>
-          <div className="qr-instructions">
-            <h3 className="qr-title">{t('connect.qrTitle')}</h3>
-            <ol className="qr-steps">
-              <li>{t('connect.step1')}</li>
-              <li>{t('connect.step2')}</li>
-              <li>{t('connect.step3')}</li>
-            </ol>
+        <>
+          <section className="qr-panel-v2">
+            <div className="qr-instructions">
+              <h3 className="qr-title">{t('connect.qrTitle')}</h3>
+              <ol className="qr-steps">
+                <li>
+                  {t('connect.step1Prefix')}
+                  <a href="#" className="qr-step-link" onClick={(e) => e.preventDefault()} aria-hidden>
+                    {t('connect.agentsDashboard')}
+                  </a>
+                </li>
+                <li>{t('connect.step2')}</li>
+                <li>{t('connect.step3')}</li>
+              </ol>
+            </div>
+          </section>
+          <div className="connect-qr-bottom">
+            <button type="button" className="connect-simulate-btn" onClick={continueFlow}>
+              {t('connect.simulateQrScan')}
+            </button>
           </div>
-        </section>
+        </>
       ) : (
         <section className="credentials-panel-v2">
           <p className="credentials-title">{t('connect.signInTitle')}</p>
