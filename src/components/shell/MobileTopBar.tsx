@@ -76,6 +76,7 @@ export function MobileTopBar() {
           {showBack ? (
             <Link className="mobile-back-link" to={backTo}>
               <ArrowLeft size={20} aria-hidden />
+              <img alt="" className="mobile-brand-mark" src={logoMark} />
               <span>{title}</span>
             </Link>
           ) : showLogo ? (
@@ -84,10 +85,13 @@ export function MobileTopBar() {
               <span className="mobile-brand-label">{t('topBar.brand')}</span>
             </div>
           ) : (
-            <span className="mobile-app-bar-title">{title}</span>
+            <div className="mobile-brand-wrap">
+              <img alt="" className="mobile-brand-mark" src={logoMark} />
+              <span className="mobile-app-bar-title">{title}</span>
+            </div>
           )}
         </div>
-        <LanguageSwitch className="mobile-lang-switch" />
+        {pathname === '/home' && <LanguageSwitch className="mobile-lang-switch" />}
       </div>
     </header>
   )

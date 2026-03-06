@@ -10,7 +10,7 @@
 }
 
 .connect-logo {
-  width: 14.4648rem;
+  width: 26rem;
   margin: 0 auto;
   display: block;
 }
@@ -135,42 +135,7 @@
 
 .qr-step-link {
   color: var(--brand-blue);
-  text-decoration: underline;
-  cursor: default;
-}
-
-.qr-step-link:hover {
-  color: #0d5a9e;
-}
-
-/* QR flow: push simulate button to bottom of page */
-.connect-page--qr {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-.connect-qr-bottom {
-  margin-top: auto;
-  padding: 2rem 0 2.4rem;
-  width: 100%;
-}
-
-.connect-simulate-btn {
-  width: 100%;
-  padding: 1rem 1.4rem;
-  font-size: 1.4rem;
   font-weight: 500;
-  font-family: inherit;
-  color: var(--text-grey);
-  background: #fff;
-  border: 0.1rem solid var(--line-grey);
-  border-radius: 0.4rem;
-  cursor: pointer;
-}
-
-.connect-simulate-btn:hover {
-  background: var(--bg-light);
 }
 
 .credentials-panel-v2 {
@@ -186,10 +151,12 @@
 }
 
 .credentials-title {
-  text-align: center;
-  font-size: 1.4rem;
-  color: #000;
+  font-size: 1.8rem;
+
+  font-weight: 500;
+  color: #1b2733;
   margin: 0;
+  text-align: center;
 }
 
 .credentials-panel-v2 input {

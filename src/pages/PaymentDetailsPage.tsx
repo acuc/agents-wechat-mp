@@ -63,24 +63,8 @@ export function PaymentDetailsPage() {
           <span>{payment.studentName}</span>
         </div>
         <div className="kv-row">
-          <span className="muted">{t('paymentDetails.institution')}</span>
+          <span className="muted">{t('paymentDetails.recipient')}</span>
           <span>{payment.institution}</span>
-        </div>
-        <div className="kv-row">
-          <span className="muted">{t('paymentDetails.paymentDate')}</span>
-          <span>{payment.date}</span>
-        </div>
-        <div className="kv-row">
-          <span className="muted">{t('paymentDetails.amount')}</span>
-          <span>AUD {formatAmountWithDecimals(payment.amountAud)}</span>
-        </div>
-        <div className="kv-row">
-          <span className="muted">{t('paymentDetails.addedDate')}</span>
-          <span>{payment.addedDate}</span>
-        </div>
-        <div className="kv-row">
-          <span className="muted">{t('paymentDetails.linkedVia')}</span>
-          <span>{payment.linkedVia}</span>
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.amountFrom')}</span>
@@ -91,8 +75,37 @@ export function PaymentDetailsPage() {
           <span>{formatAmountWithDecimals(payment.amountAud)} AUD</span>
         </div>
         <div className="kv-row">
+          <span className="muted">{t('paymentDetails.initiatedDate')}</span>
+          <span>{payment.date}</span>
+        </div>
+        <div className="kv-row">
+          <span className="muted">{t('paymentDetails.addedDate')}</span>
+          <span>{payment.addedDate}</span>
+        </div>
+        <div className="kv-row">
+          <span className="muted">{t('paymentDetails.linkedVia')}</span>
+          <span>{payment.linkedVia}</span>
+        </div>
+        <div className="kv-row">
+          <span className="muted">{t('paymentDetails.agentName')}</span>
+          <span>{payment.agentName}</span>
+        </div>
+        <div className="kv-row">
           <span className="muted">{t('paymentDetails.agentEmail')}</span>
           <span>{payment.agentEmail}</span>
+        </div>
+        <div className="kv-row">
+          <span className="muted">{t('paymentDetails.paymentTrackingLink')}</span>
+          <span>
+            <a
+              href={payment.trackingLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="payment-tracking-link"
+            >
+              {t('paymentDetails.openTracking')}
+            </a>
+          </span>
         </div>
       </section>
 

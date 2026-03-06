@@ -9,7 +9,7 @@ import logoFull from '../assets/logo-full.svg'
 export function ConnectPage() {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const { connectMethod, setConnectMethod } = useAppStore()
+  const { connectMethod, setConnectMethod, setAgentAccountName } = useAppStore()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [usernameError, setUsernameError] = useState('')
@@ -25,12 +25,15 @@ export function ConnectPage() {
     setUsernameError(nextUsernameError)
     setPasswordError(nextPasswordError)
     const hasErrors = !!nextUsernameError || !!nextPasswordError
-    if (!hasErrors) continueFlow()
+    if (!hasErrors) {
+      setAgentAccountName(username.trim())
+      continueFlow()
+    }
   }
 
   return (
     <main
-      className={`page app-scroll connect-page login-flow-page${connectMethod === 'qr' ? ' connect-page--qr' : ''}`}
+      className="page app-scroll connect-page login-flow-page"
     >
       <div className="login-lang-wrap">
         <LanguageSwitch />
@@ -64,28 +67,22 @@ export function ConnectPage() {
       </div>
 
       {connectMethod === 'qr' ? (
-        <>
-          <section className="qr-panel-v2">
-            <div className="qr-instructions">
-              <h3 className="qr-title">{t('connect.qrTitle')}</h3>
-              <ol className="qr-steps">
-                <li>
-                  {t('connect.step1Prefix')}
-                  <a href="#" className="qr-step-link" onClick={(e) => e.preventDefault()} aria-hidden>
-                    {t('connect.agentsDashboard')}
-                  </a>
-                </li>
-                <li>{t('connect.step2')}</li>
-                <li>{t('connect.step3')}</li>
-              </ol>
-            </div>
-          </section>
-          <div className="connect-qr-bottom">
-            <button type="button" className="connect-simulate-btn" onClick={continueFlow}>
-              {t('connect.simulateQrScan')}
-            </button>
+        <section className="qr-panel-v2">
+          <div className="qr-instructions">
+            <h3 className="qr-title">{t('connect.qrTitle')}</h3>
+            <ol className="qr-steps">
+              <li>
+                {t('connect.step1Prefix')}
+                <span>{t('connect.agentsDashboard')}</span>
+              </li>
+              <li>{t('connect.step2')}</li>
+              <li>{t('connect.step3')}</li>
+            </ol>
           </div>
-        </>
+          <button type="button" className="primary-btn connect-submit" onClick={continueFlow}>
+            {t('connect.scan')}
+          </button>
+        </section>
       ) : (
         <section className="credentials-panel-v2">
           <p className="credentials-title">{t('connect.signInTitle')}</p>

@@ -4,8 +4,9 @@ export type PaymentStatus =
   | 'Delivered'
   | 'Guaranteed'
   | 'Initiated'
-  | 'Cancelled'
   | 'On hold'
+  | 'Cancelled'
+
 
 export interface ReferralProduct {
   id: string
@@ -32,7 +33,10 @@ export interface Payment {
   linkedVia: 'Manually' | 'Auto'
   amountFromValue: number
   amountFromCurrency: string
+  agentName: string
   agentEmail: string
+  /** URL to open payment tracking in a webview or new tab */
+  trackingLink: string
   timeline: PaymentTimelineEvent[]
 }
 

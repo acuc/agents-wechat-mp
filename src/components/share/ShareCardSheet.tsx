@@ -3,6 +3,7 @@ import { ArrowRight, X } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { getProductIconUrl } from '../../lib/productIcons'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useAppStore } from '../../store/useAppStore'
 import type { ReferralProduct } from '../../types/domain'
 import logoMark from '../../assets/F.svg'
 
@@ -14,7 +15,9 @@ interface Props {
 export function ShareCardSheet({ product, onClose }: Props) {
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const agentAccountName = useAppStore((s) => s.agentAccountName)
   const iconUrl = getProductIconUrl(product.id)
+  const agentLabel = agentAccountName || t('shareLink.flywireAgents')
   const [isVisible, setIsVisible] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -76,7 +79,7 @@ export function ShareCardSheet({ product, onClose }: Props) {
             <p className="sheet-card-desc">{product.description}</p>
             <p className="sheet-card-agent">
               <img src={logoMark} alt="" className="sheet-card-agent-mark" />
-              {t('shareLink.flywireAgents')}
+              {agentLabel}
             </p>
           </div>
         </div>

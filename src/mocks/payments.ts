@@ -2,6 +2,8 @@ import type { Payment } from '../types/domain'
 
 const CNY_PER_AUD = 4.85
 
+const DEMO_TRACKING_LINK = 'https://payment.demo.flywire.com/tracking/39a98f02-63cb-4d24-a078-09dce6ce119a?token=6e9b08d6-d9d5-4837-a85b-6b786c698193'
+
 function makePaymentId(seed: number): string {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let id = ''
@@ -143,7 +145,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Manually',
     amountFromValue: Math.round(32500 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 18, 10:32 AM' },
       { id: '2', label: 'Funds Received', timestamp: 'Feb 19, 2:15 PM' },
@@ -162,7 +166,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Auto',
     amountFromValue: Math.round(28600 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 22, 10:00 AM' },
       { id: '2', label: 'Funds Received', timestamp: 'Feb 24, 2:15 PM' },
@@ -180,7 +186,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Auto',
     amountFromValue: Math.round(41320 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [{ id: '1', label: 'Payment Initiated', timestamp: 'Feb 25, 7:40 PM' }],
   },
   {
@@ -194,7 +202,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Manually',
     amountFromValue: Math.round(24780 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 21, 10:00 AM' },
       { id: '2', label: 'Funds Received', timestamp: 'Feb 22, 1:30 PM' },
@@ -212,7 +222,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Auto',
     amountFromValue: Math.round(36750 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 21, 9:00 AM' },
       { id: '2', label: 'Payment Cancelled', timestamp: 'Feb 22, 10:20 AM' },
@@ -229,7 +241,9 @@ const firstSix: Payment[] = [
     linkedVia: 'Auto',
     amountFromValue: Math.round(19840 * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 19, 9:41 AM' },
       { id: '2', label: 'Funds Received', timestamp: 'Feb 20, 2:15 PM' },
@@ -254,7 +268,9 @@ const extraPayments: Payment[] = Array.from({ length: 50 }, (_, i) => {
     linkedVia: i % 3 === 0 ? 'Manually' : 'Auto',
     amountFromValue: Math.round(amountAud * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
+    agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
+    trackingLink: DEMO_TRACKING_LINK,
     timeline: makeTimeline(status, day),
   }
 })

@@ -22,9 +22,7 @@ export function ShareLinkPage() {
         {t('shareLink.tapProduct')}
       </section>
       <section className="card referral-products">
-        <div className="section-header share-link-header"> 
-          <p className="section-title" style={{margin:0, padding:0}}>{t('shareLink.selectProduct')}</p>   
-        </div>
+       
         {products.map((product) => (
           <button
             className="product-row"

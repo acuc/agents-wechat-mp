@@ -9,6 +9,24 @@ export const referralProducts: ReferralProduct[] = [
     icon: 'tuition-payments',
   },
   {
+    id: 'germany-blocked-accounts',
+    name: 'Germany Blocked Accounts',
+    description: 'Fund your blocked account securely with no unexpected fees',
+    icon: 'germany-blocked-accounts',
+  },
+  {
+    id: 'new-zealand-fts',
+    name: 'New Zealand FTS',
+    description: 'Fund your FTS account securely with no unexpected fees',
+    icon: 'nz-fts',
+  },
+  {
+    id: 'canadian-gic-accounts',
+    name: 'Canadian GIC Accounts',
+    description: 'Fund your GIC account with no unexpected fees',
+    icon: 'canada-gic',
+  },
+  {
     id: 'oshc-insurance-australia',
     name: 'OSHC Insurance Australia',
     description: 'Compare your options and meet your Australian visa requirements',
@@ -25,23 +43,5 @@ export const referralProducts: ReferralProduct[] = [
     name: 'Student Health Insurance New Zealand',
     description: 'Choose the best New Zealand Student Health Insurance',
     icon: 'nz-health-insurance',
-  },
-  {
-    id: 'canadian-gic-accounts',
-    name: 'Canadian GIC Accounts',
-    description: 'Fund your GIC account with no unexpected fees',
-    icon: 'canada-gic',
-  },
-  {
-    id: 'germany-blocked-accounts',
-    name: 'Germany Blocked Accounts',
-    description: 'Fund your blocked account securely with no unexpected fees',
-    icon: 'germany-blocked-accounts',
-  },
-  {
-    id: 'new-zealand-fts',
-    name: 'New Zealand FTS',
-    description: 'Fund your FTS account securely with no unexpected fees',
-    icon: 'nz-fts',
-  },
+  }
 ]

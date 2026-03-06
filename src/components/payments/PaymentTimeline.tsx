@@ -1,17 +1,14 @@
-import { MessageSquareWarning } from 'lucide-react'
 import type { Payment } from '../../types/domain'
 import { useTranslation } from '../../i18n/useTranslation'
 import { getTimelineSteps } from './paymentTimelineSteps'
 
 interface Props {
   payment: Payment
-  onContactSupport?: () => void
 }
 
-export function PaymentTimeline({ payment, onContactSupport }: Props) {
+export function PaymentTimeline({ payment }: Props) {
   const { t } = useTranslation()
   const steps = getTimelineSteps(payment)
-  const isCancelled = payment.status === 'Cancelled'
 
   return (
     <section className="card">
@@ -30,17 +27,6 @@ export function PaymentTimeline({ payment, onContactSupport }: Props) {
           </div>
         ))}
       </div>
-      {isCancelled && (
-        <div className="timeline-actions">
-          <button
-            type="button"
-            className="btn-contact-support"
-            onClick={onContactSupport}
-          >
-            <MessageSquareWarning size={18} /> {t('paymentDetails.contactSupport')}
-          </button>
-        </div>
-      )}
     </section>
   )
 }

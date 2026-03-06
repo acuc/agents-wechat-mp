@@ -80,13 +80,13 @@ export async function generatePaymentReceiptPdf(
   const details: Array<[string, string]> = [
     ['Payment ID', payment.id],
     ['Student name', payment.studentName],
-    ['Institution', payment.institution],
-    ['Payment date', payment.date],
-    ['Amount', `AUD ${formatAmount(payment.amountAud)}`],
-    ['Added date', payment.addedDate],
-    ['Linked via', payment.linkedVia],
+    ['Recipient', payment.institution],
     ['Amount from', `${payment.amountFromValue.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${payment.amountFromCurrency}`],
     ['Amount to', `${formatAmount(payment.amountAud)} AUD`],
+    ['Initiated date', payment.date],
+    ['Added date', payment.addedDate],
+    ['Linked via', payment.linkedVia],
+    ['Agent name', payment.agentName],
     ['Agent email', payment.agentEmail],
   ]
 
