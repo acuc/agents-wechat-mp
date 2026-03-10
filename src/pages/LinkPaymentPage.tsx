@@ -56,7 +56,8 @@ export function LinkPaymentPage() {
       setSearchError(t('linkPayment.searchErrorRequired'))
       return
     }
-    const payment = payments.find((p) => p.id.toUpperCase() === trimmed.toUpperCase()) ?? null
+    const exactMatch = payments.find((p) => p.id.toUpperCase() === trimmed.toUpperCase())
+    const payment: Payment | null = exactMatch ?? (trimmed.toUpperCase().startsWith('PAY') ? { ...payments[0], id: trimmed } : null)
     pendingSearchRef.current = payment
     setSearching(true)
   }
@@ -100,7 +101,7 @@ export function LinkPaymentPage() {
   return (
     <div className="page link-payment-page" style={{paddingTop:'1.6rem'}}>
       <section className="link-payment-card" style={{background:'var(--bg-light)'}}>
-        <h2 className="link-payment-card-title">{t('linkPayment.enterId')}</h2>
+        <h1 className="link-payment-page-title">{t('linkPayment.pageTitle')}</h1>
         <p className="link-payment-card-instruction">{t('linkPayment.instruction')}</p>
         <div
           className={`link-payment-search-wrap${searchError ? ' link-payment-search-wrap--error' : ''}`}
@@ -155,7 +156,7 @@ export function LinkPaymentPage() {
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amount')}</span>
-              <span>AUD {formatAmount(foundPayment.amountAud)}</span>
+              <span>{foundPayment.amountToCurrency} {formatAmount(foundPayment.amountTo)}</span>
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amountFrom')}</span>
@@ -228,7 +229,7 @@ export function LinkPaymentPage() {
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amount')}</span>
-              <span>AUD {formatAmount(foundPayment.amountAud)}</span>
+              <span>{foundPayment.amountToCurrency} {formatAmount(foundPayment.amountTo)}</span>
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amountFrom')}</span>

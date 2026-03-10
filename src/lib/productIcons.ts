@@ -4,6 +4,7 @@ import nzHealthInsuranceIcon from '../assets/nz-health-insurance.svg'
 import canadaGicIcon from '../assets/canada-GIC.svg'
 import germanyBlockedAccountsIcon from '../assets/germany-blocked-accounts.svg'
 import nzFtsIcon from '../assets/nz-fts.svg'
+import landingIcon from '../assets/landing.svg'
 
 export const productIconMap: Record<string, string> = {
   'education-payments': tuitionPaymentsIcon,
@@ -13,6 +14,7 @@ export const productIconMap: Record<string, string> = {
   'canadian-gic-accounts': canadaGicIcon,
   'germany-blocked-accounts': germanyBlockedAccountsIcon,
   'new-zealand-fts': nzFtsIcon,
+  'landing-page': landingIcon,
 }
 
 export function getProductIconUrl(productId: string): string {

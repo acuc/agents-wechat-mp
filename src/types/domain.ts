@@ -25,10 +25,17 @@ export interface Payment {
   id: string
   studentName: string
   studentEmail?: string
-  amountAud: number
+  /** Amount in the destination (recipient) currency */
+  amountTo: number
+  /** Destination currency code, e.g. AUD, EUR, USD, GBP */
+  amountToCurrency: string
   institution: string
+  /** e.g. "Denton, TX, United States" */
+  institutionAddress?: string
   date: string
   status: PaymentStatus
+  /** Name of the person who made the payment */
+  payerName: string
   addedDate: string
   linkedVia: 'Manually' | 'Auto'
   amountFromValue: number
@@ -37,6 +44,8 @@ export interface Payment {
   agentEmail: string
   /** URL to open payment tracking in a webview or new tab */
   trackingLink: string
+  /** When true, the payment has Best Price Guarantee applied */
+  bestPriceGuaranteeApplied?: boolean
   timeline: PaymentTimelineEvent[]
 }
 

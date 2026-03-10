@@ -45,7 +45,7 @@ export function PaymentListItem({ payment }: Props) {
             <div className="payment-main-content">
               <p className="payment-student">{payment.studentName}</p>
               <p className="payment-amount">
-                AUD {formatAmountWithDecimals(payment.amountAud)}
+                {payment.amountToCurrency} {formatAmountWithDecimals(payment.amountTo)}
               </p>
               
             </div>

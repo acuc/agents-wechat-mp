@@ -42,14 +42,21 @@ export function PaymentDetailsPage() {
     setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
 
+  function handleDownloadA2Form() {
+    // TODO: implement A2 form download
+  }
+
   return (
     <div className="page">
       <section className="center summary">
         <span className={`status-pill status-${payment.status.toLowerCase().replace(' ', '-')}`} style={{ fontSize: '1.4rem', fontWeight:'500'}}>
           {t(statusToKey[payment.status])}
         </span>
-        <h2 style={{fontSize:'3.2rem', fontWeight:'500'}}>{formatAmountWithDecimals(payment.amountAud)} AUD</h2>
-        <p className="muted">{payment.institution}</p>
+        <h2 style={{fontSize:'2.4rem', fontWeight:'500'}}>{formatAmountWithDecimals(payment.amountTo)} {payment.amountToCurrency}</h2>
+        <p style={{fontSize:'1.8rem'}} className="muted">{payment.institution}</p>
+        {payment.institutionAddress && (
+          <p style={{fontSize:'1.4rem'}} className="muted">{payment.institutionAddress}</p>
+        )}
       </section>
 
       <section className="card">
@@ -63,7 +70,7 @@ export function PaymentDetailsPage() {
           <span>{payment.studentName}</span>
         </div>
         <div className="kv-row">
-          <span className="muted">{t('paymentDetails.recipient')}</span>
+          <span className="muted">{t('paymentDetails.institution')}</span>
           <span>{payment.institution}</span>
         </div>
         <div className="kv-row">
@@ -72,7 +79,11 @@ export function PaymentDetailsPage() {
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.amountTo')}</span>
-          <span>{formatAmountWithDecimals(payment.amountAud)} AUD</span>
+          <span>{formatAmountWithDecimals(payment.amountTo)} {payment.amountToCurrency}</span>
+        </div>
+        <div className="kv-row">
+          <span className="muted">{t('paymentDetails.payerName')}</span>
+          <span>{payment.payerName}</span>
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.initiatedDate')}</span>
@@ -107,11 +118,22 @@ export function PaymentDetailsPage() {
             </a>
           </span>
         </div>
+        {payment.bestPriceGuaranteeApplied && (
+          <div className="kv-row">
+            <span className="muted">{t('paymentDetails.bestPriceGuaranteeApplied')}</span>
+            <span>{t('paymentDetails.yes')}</span>
+          </div>
+        )}
       </section>
 
       {payment.status === 'Delivered' && (
         <button className="primary-btn" type="button" onClick={handleDownloadReceipt}>
           <Download size={16} /> {t('paymentDetails.downloadReceipt')}
+        </button>
+      )}
+      {payment.status === 'Initiated' && (
+        <button className="primary-btn payment-details-btn-white" type="button" onClick={handleDownloadA2Form}>
+          <Download size={16} /> {t('paymentDetails.downloadA2Form')}
         </button>
       )}
       <PaymentTimeline payment={payment} />

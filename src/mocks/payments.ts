@@ -33,6 +33,26 @@ const institutions = [
   'RMIT University',
 ]
 
+const amountToCurrencies: string[] = ['AUD', 'EUR', 'USD', 'GBP']
+
+const institutionAddresses: string[] = [
+  'Melbourne, VIC, Australia',
+  'Auckland, New Zealand',
+  'Sydney, NSW, Australia',
+  'Dunedin, New Zealand',
+  'Melbourne, VIC, Australia',
+  'Wellington, New Zealand',
+  'Sydney, NSW, Australia',
+  'Brisbane, QLD, Australia',
+  'Perth, WA, Australia',
+  'Auckland, New Zealand',
+  'Palmerston North, New Zealand',
+  'Adelaide, SA, Australia',
+  'Newcastle, NSW, Australia',
+  'Sydney, NSW, Australia',
+  'Melbourne, VIC, Australia',
+]
+
 const chineseNames = [
   'Li Xiaoming',
   'Wang Fang',
@@ -137,10 +157,13 @@ const firstSix: Payment[] = [
   {
     id: makePaymentId(1001),
     studentName: 'Li Xiaoming',
-    amountAud: 32500,
+    amountTo: 32500,
+    amountToCurrency: 'AUD',
     institution: 'University of Melbourne',
+    institutionAddress: 'Melbourne, VIC, Australia',
     date: 'Feb 20, 2026',
     status: 'Delivered',
+    payerName: 'Li Xiaoming',
     addedDate: 'Feb 18, 2026',
     linkedVia: 'Manually',
     amountFromValue: Math.round(32500 * CNY_PER_AUD),
@@ -148,6 +171,7 @@ const firstSix: Payment[] = [
     agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
     trackingLink: DEMO_TRACKING_LINK,
+    bestPriceGuaranteeApplied: true,
     timeline: [
       { id: '1', label: 'Payment Initiated', timestamp: 'Feb 18, 10:32 AM' },
       { id: '2', label: 'Funds Received', timestamp: 'Feb 19, 2:15 PM' },
@@ -158,10 +182,13 @@ const firstSix: Payment[] = [
   {
     id: makePaymentId(1002),
     studentName: 'Wang Fang',
-    amountAud: 28600,
+    amountTo: 28600,
+    amountToCurrency: 'EUR',
     institution: 'University of Auckland',
+    institutionAddress: 'Auckland, New Zealand',
     date: 'Feb 24, 2026',
     status: 'Guaranteed',
+    payerName: 'Wang Fang',
     addedDate: 'Feb 22, 2026',
     linkedVia: 'Auto',
     amountFromValue: Math.round(28600 * CNY_PER_AUD),
@@ -178,10 +205,13 @@ const firstSix: Payment[] = [
   {
     id: makePaymentId(1003),
     studentName: 'Zhang Wei',
-    amountAud: 41320,
+    amountTo: 41320,
+    amountToCurrency: 'USD',
     institution: 'UNSW Sydney',
+    institutionAddress: 'Sydney, NSW, Australia',
     date: 'Feb 25, 2026',
     status: 'Initiated',
+    payerName: 'Zhang Wei',
     addedDate: 'Feb 25, 2026',
     linkedVia: 'Auto',
     amountFromValue: Math.round(41320 * CNY_PER_AUD),
@@ -189,15 +219,19 @@ const firstSix: Payment[] = [
     agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
     trackingLink: DEMO_TRACKING_LINK,
+    bestPriceGuaranteeApplied: true,
     timeline: [{ id: '1', label: 'Payment Initiated', timestamp: 'Feb 25, 7:40 PM' }],
   },
   {
     id: makePaymentId(1004),
     studentName: 'Liu Yang',
-    amountAud: 24780,
+    amountTo: 24780,
+    amountToCurrency: 'GBP',
     institution: 'University of Otago',
+    institutionAddress: 'Dunedin, New Zealand',
     date: 'Feb 23, 2026',
     status: 'On hold',
+    payerName: 'Liu Yang',
     addedDate: 'Feb 21, 2026',
     linkedVia: 'Manually',
     amountFromValue: Math.round(24780 * CNY_PER_AUD),
@@ -214,10 +248,13 @@ const firstSix: Payment[] = [
   {
     id: makePaymentId(1005),
     studentName: 'Chen Jing',
-    amountAud: 36750,
+    amountTo: 36750,
+    amountToCurrency: 'AUD',
     institution: 'Monash University',
+    institutionAddress: 'Melbourne, VIC, Australia',
     date: 'Feb 22, 2026',
     status: 'Cancelled',
+    payerName: 'Chen Jing',
     addedDate: 'Feb 21, 2026',
     linkedVia: 'Auto',
     amountFromValue: Math.round(36750 * CNY_PER_AUD),
@@ -233,10 +270,13 @@ const firstSix: Payment[] = [
   {
     id: makePaymentId(1006),
     studentName: 'Yang Min',
-    amountAud: 19840,
+    amountTo: 19840,
+    amountToCurrency: 'EUR',
     institution: 'Victoria University of Wellington',
+    institutionAddress: 'Wellington, New Zealand',
     date: 'Feb 21, 2026',
     status: 'Delivered',
+    payerName: 'Yang Min',
     addedDate: 'Feb 19, 2026',
     linkedVia: 'Auto',
     amountFromValue: Math.round(19840 * CNY_PER_AUD),
@@ -256,21 +296,28 @@ const firstSix: Payment[] = [
 const extraPayments: Payment[] = Array.from({ length: 50 }, (_, i) => {
   const day = 18 + (i % 10)
   const status = statuses[i % statuses.length]
-  const amountAud = [22100, 31000, 27500, 38900, 25600, 33400, 19800, 41200, 28900, 36700][i % 10] + (i % 5) * 200
+  const amountTo = [22100, 31000, 27500, 38900, 25600, 33400, 19800, 41200, 28900, 36700][i % 10] + (i % 5) * 200
+  const instIdx = i % institutions.length
+  const student = chineseNames[i + 6]
+  const currency = amountToCurrencies[i % amountToCurrencies.length]
   return {
     id: makePaymentId(2000 + i),
-    studentName: chineseNames[i + 6],
-    amountAud,
-    institution: institutions[i % institutions.length],
+    studentName: student,
+    amountTo,
+    amountToCurrency: currency,
+    institution: institutions[instIdx],
+    institutionAddress: institutionAddresses[instIdx],
     date: `Feb ${day}, 2026`,
     status,
+    payerName: student,
     addedDate: `Feb ${Math.max(15, day - 2)}, 2026`,
     linkedVia: i % 3 === 0 ? 'Manually' : 'Auto',
-    amountFromValue: Math.round(amountAud * CNY_PER_AUD),
+    amountFromValue: Math.round(amountTo * CNY_PER_AUD),
     amountFromCurrency: 'CNY',
     agentName: 'Flywire Agent',
     agentEmail: 'agent.example@flywire.com',
     trackingLink: DEMO_TRACKING_LINK,
+    bestPriceGuaranteeApplied: i % 5 === 0,
     timeline: makeTimeline(status, day),
   }
 })

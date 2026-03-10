@@ -43,5 +43,11 @@ export const referralProducts: ReferralProduct[] = [
     name: 'Student Health Insurance New Zealand',
     description: 'Choose the best New Zealand Student Health Insurance',
     icon: 'nz-health-insurance',
+  },
+  {
+    id: 'landing-page',
+    name: 'Landing page',
+    description: 'Share the landing page',
+    icon: 'landing',
   }
 ]

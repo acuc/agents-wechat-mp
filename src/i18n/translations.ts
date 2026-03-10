@@ -50,7 +50,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'home.selectCompany': 'Select company',
 
     // Share link
-    'shareLink.tapProduct': 'Tap a product below to share its referral link as a native WeChat card.',
+    'shareLink.tapProduct': 'Tap a product below to share its referral link.',
     'shareLink.selectProduct': 'Select a product to send a referral card',
     'shareLink.shareToWeChat': 'Share to WeChat',
     'shareLink.previewCard': 'Preview Card',
@@ -77,6 +77,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'payments.guaranteed': 'Guaranteed',
 
     // Link payment page
+    'linkPayment.pageTitle': 'Add student payment to your account',
     'linkPayment.enterId': 'Enter Payment ID',
     'linkPayment.instruction': 'Enter a valid payment ID above and click the "Search" button to find your payment.',
     'linkPayment.searchPayment': 'Search Payment',
@@ -97,11 +98,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'linkPayment.cancel': 'Cancel',
     'linkPayment.linking': 'Linking payment',
     'linkPayment.paymentLinked': 'Payment Linked',
-    'linkPayment.viewInPayments': 'View in Payments',
+    'linkPayment.viewInPayments': 'View payment',
     'linkPayment.linkAnother': 'Link Another',
 
     // Payment details
     'paymentDetails.downloadReceipt': 'Download receipt',
+    'paymentDetails.downloadA2Form': 'Download A2 form',
     'paymentDetails.contactSupport': 'Contact support',
     'paymentDetails.paymentDetails': 'Payment details',
     'paymentDetails.paymentId': 'Payment ID',
@@ -110,6 +112,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'paymentDetails.recipient': 'Recipient',
     'paymentDetails.paymentDate': 'Payment date',
     'paymentDetails.initiatedDate': 'Initiated date',
+    'paymentDetails.payerName': 'Payer name',
     'paymentDetails.amount': 'Amount',
     'paymentDetails.addedDate': 'Added date',
     'paymentDetails.linkedVia': 'Linked via',
@@ -119,6 +122,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'paymentDetails.agentEmail': 'Agent email',
     'paymentDetails.paymentTrackingLink': 'Payment tracking link',
     'paymentDetails.openTracking': 'Open tracking',
+    'paymentDetails.bestPriceGuaranteeApplied': 'Best price guarantee',
+    'paymentDetails.yes': 'Yes',
     'paymentDetails.timeline': 'Payment timeline',
     'timeline.initiated': 'Initiated',
     'timeline.fundsReceived': 'Verified',
@@ -191,7 +196,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'selectContact.cancel': '取消',
     'selectContact.shareReferralLink': '分享推荐链接',
 
-    'payments.searchPlaceholder': '按金额、姓名、ID 或机构搜索',
+    'payments.searchPlaceholder': '搜索',
     'payments.linkPayment': '关联付款',
     'payments.moreFilters': '更多筛选',
     'payments.all': '全部',
@@ -201,6 +206,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'payments.initiated': '已发起',
     'payments.guaranteed': '已担保',
 
+    'linkPayment.pageTitle': '将学生付款关联到您的账户',
     'linkPayment.enterId': '输入付款 ID',
     'linkPayment.instruction': '在上方输入有效的付款 ID，然后点击「搜索」查找您的付款。',
     'linkPayment.searchPayment': '搜索付款',
@@ -225,12 +231,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     'linkPayment.linkAnother': '再关联一笔',
 
     'paymentDetails.downloadReceipt': '下载收据',
+    'paymentDetails.downloadA2Form': '下载 A2 表格',
     'paymentDetails.contactSupport': '联系支持',
     'paymentDetails.paymentDetails': '付款详情',
     'paymentDetails.paymentId': '付款 ID',
     'paymentDetails.studentName': '学生姓名',
     'paymentDetails.institution': '机构',
+    'paymentDetails.recipient': '收款方',
     'paymentDetails.paymentDate': '付款日期',
+    'paymentDetails.payerName': '付款人姓名',
     'paymentDetails.amount': '金额',
     'paymentDetails.addedDate': '添加日期',
     'paymentDetails.linkedVia': '关联方式',
@@ -240,6 +249,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'paymentDetails.agentEmail': '代理商邮箱',
     'paymentDetails.paymentTrackingLink': '付款跟踪链接',
     'paymentDetails.openTracking': '打开跟踪',
+    'paymentDetails.bestPriceGuaranteeApplied': '最优价格保证',
+    'paymentDetails.yes': '是',
     'paymentDetails.timeline': '付款时间线',
     'timeline.initiated': '发起',
     'timeline.fundsReceived': '已核实',

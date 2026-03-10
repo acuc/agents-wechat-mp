@@ -65,7 +65,7 @@ export async function generatePaymentReceiptPdf(
   doc.setFontSize(11)
   doc.setFont('helvetica', 'normal')
   doc.setTextColor(80, 80, 80)
-  doc.text(`${payment.status} · ${formatAmount(payment.amountAud)} AUD`, MARGIN, y)
+  doc.text(`${payment.status} · ${formatAmount(payment.amountTo)} ${payment.amountToCurrency}`, MARGIN, y)
   y += LINE_HEIGHT
   doc.text(payment.institution, MARGIN, y)
   y += LINE_HEIGHT + SECTION_GAP
@@ -82,7 +82,7 @@ export async function generatePaymentReceiptPdf(
     ['Student name', payment.studentName],
     ['Recipient', payment.institution],
     ['Amount from', `${payment.amountFromValue.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${payment.amountFromCurrency}`],
-    ['Amount to', `${formatAmount(payment.amountAud)} AUD`],
+    ['Amount to', `${formatAmount(payment.amountTo)} ${payment.amountToCurrency}`],
     ['Initiated date', payment.date],
     ['Added date', payment.addedDate],
     ['Linked via', payment.linkedVia],

@@ -135,3 +135,13 @@
 .kv-row .muted {
   font-size: 1.4rem;
 }
+
+.payment-details-btn-white {
+  background: #fff !important;
+  color: var(--text-dark);
+  border: 0.1rem solid var(--line-grey);
+}
+
+.payment-details-btn-white:hover {
+  background: var(--bg-light) !important;
+}
