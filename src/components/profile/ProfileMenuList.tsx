@@ -2,7 +2,6 @@ import { ChevronRight } from 'lucide-react'
 import { IconGlyph } from '../common/IconGlyph'
 
 const items = [
-  { icon: 'Bell' as const, label: 'Notifications', suffix: '3 unread' },
   { icon: 'CircleHelp' as const, label: 'Help Center' },
   { icon: 'Settings' as const, label: 'Privacy & Security' },
   { icon: 'Info' as const, label: 'About', suffix: 'v1.0.0' },

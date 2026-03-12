@@ -47,7 +47,7 @@ export const referralProducts: ReferralProduct[] = [
   {
     id: 'landing-page',
     name: 'Landing page',
-    description: 'Share the landing page',
+    description: 'Choose the Flywire product that fits you',
     icon: 'landing',
   }
 ]

@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import type { ReferralProduct } from '../types/domain'
 import { getProductIconUrl } from '../lib/productIcons'
 import { useTranslation } from '../i18n/useTranslation'
-import logoMark from '../assets/F.svg'
 import '../styles/pages/ShareLinkChatPage.css'
 
 interface ChatLocationState {
@@ -37,12 +36,8 @@ export function ShareLinkChatPage() {
                 {productIconUrl ? <img src={productIconUrl} alt="" /> : null}
               </div>
               <div className="wechat-card-message-copy">
-                <p className="wechat-card-message-name">{product.name}</p>
-                <p className="wechat-card-message-desc">{product.description}</p>
-                <p className="wechat-card-message-agent">
-                  <img src={logoMark} alt="" className="wechat-card-message-agent-mark" />
-                  {t('shareLink.flywireAgents')}
-                </p>
+                <p className="wechat-card-message-name">{t(`shareLink.product.${product.id}.name`) || product.name}</p>
+                <p className="wechat-card-message-desc">{t(`shareLink.product.${product.id}.description`) || product.description}</p>
               </div>
             </div>
           </div>

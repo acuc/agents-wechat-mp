@@ -5,7 +5,6 @@ import { useTranslation } from '../i18n/useTranslation'
 import type { ReferralProduct } from '../types/domain'
 import { getProductIconUrl } from '../lib/productIcons'
 import { contacts } from '../mocks/contacts'
-import logoMark from '../assets/F.svg'
 import '../styles/pages/SelectContactPage.css'
 
 export function SelectContactPage() {
@@ -94,12 +93,8 @@ export function SelectContactPage() {
                     {productIconUrl ? <img src={productIconUrl} alt="" /> : null}
                   </div>
                   <div className="sheet-card-copy">
-                    <p className="sheet-card-name">{product.name}</p>
-                    <p className="sheet-card-desc">{product.description}</p>
-                    <p className="sheet-card-agent">
-                      <img src={logoMark} alt="" className="sheet-card-agent-mark" />
-                      {t('shareLink.flywireAgents')}
-                    </p>
+                    <p className="sheet-card-name">{t(`shareLink.product.${product.id}.name`) || product.name}</p>
+                    <p className="sheet-card-desc">{t(`shareLink.product.${product.id}.description`) || product.description}</p>
                   </div>
                 </div>
                 <div className="select-contact-modal-actions">
