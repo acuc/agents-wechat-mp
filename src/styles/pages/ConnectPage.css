@@ -178,10 +178,47 @@
   border-color: #d63442;
 }
 
+.twofa-digits-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.twofa-digits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.twofa-digit {
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 0.1rem solid #d1d5db;
+  border-radius: 0.4rem;
+  background: #fff;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #1b2733;
+  text-align: center;
+  padding: 0;
+}
+
+.twofa-digit:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 0.2rem rgba(13, 90, 158, 0.2);
+}
+
+.twofa-digit.input-error {
+  border-color: #d63442;
+}
+
 .field-error {
   margin: 0.8rem 0 0;
   color: #d63442;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .connect-submit {
@@ -190,6 +227,18 @@
   box-shadow:
     0 0.8rem 1.6rem -0.9rem rgba(0, 139, 255, 0.51),
     0 0.8rem 1.6rem -1rem rgba(189, 189, 189, 0.65);
+}
+
+.connect-back-link {
+  display: block;
+  margin-top: 1.2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  color: var(--brand-blue);
+  cursor: pointer;
+  text-align: center;
 }
 
 .credentials-panel input {
