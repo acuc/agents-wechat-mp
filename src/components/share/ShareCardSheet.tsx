@@ -16,13 +16,19 @@ export function ShareCardSheet({ product, onClose }: Props) {
   const iconUrl = getProductIconUrl(product.id)
   const [isVisible, setIsVisible] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
+  const [copied, setCopied] = useState(false)
   const overlayRef = useRef<HTMLDivElement>(null)
+  const copyFeedbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const rafId = requestAnimationFrame(() => {
       requestAnimationFrame(() => setIsVisible(true))
     })
     return () => cancelAnimationFrame(rafId)
+  }, [])
+
+  useEffect(() => () => {
+    if (copyFeedbackTimeoutRef.current) clearTimeout(copyFeedbackTimeoutRef.current)
   }, [])
 
   const handleClose = () => {
@@ -38,6 +44,26 @@ export function ShareCardSheet({ product, onClose }: Props) {
   const handleShareToWeChat = () => {
     onClose()
     navigate('/share-link/select-contact', { state: { product } })
+  }
+
+  const getReferralLink = () =>
+    product.referralLink ?? `https://referral.flywire.com/${product.id}`
+
+  const handleCopyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(getReferralLink())
+    } catch {
+      // fallback for older browsers
+      const input = document.createElement('input')
+      input.value = getReferralLink()
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('copy')
+      document.body.removeChild(input)
+    }
+    setCopied(true)
+    if (copyFeedbackTimeoutRef.current) clearTimeout(copyFeedbackTimeoutRef.current)
+    copyFeedbackTimeoutRef.current = setTimeout(() => setCopied(false), 2000)
   }
 
   const overlayClass = [
@@ -77,6 +103,13 @@ export function ShareCardSheet({ product, onClose }: Props) {
         </div>
         <button className="primary-btn share-sheet-share-btn" type="button" onClick={handleShareToWeChat}>
           {t('shareLink.shareToWeChat')} <ArrowRight size={16} />
+        </button>
+        <button
+          className="share-sheet-copy-btn"
+          type="button"
+          onClick={handleCopyToClipboard}
+        >
+          {copied ? t('shareLink.copiedToClipboard') : t('shareLink.copyToClipboard')}
         </button>
       </div>
     </div>

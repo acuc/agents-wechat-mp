@@ -199,6 +199,23 @@
 .share-sheet .share-sheet-share-btn:hover {
   background: #0d5a9e;
 }
+
+.share-sheet-copy-btn {
+  width: 100%;
+  margin: 0.8rem 0 0;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: #fff;
+  border: 0.1rem solid var(--line-grey);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.share-sheet-copy-btn:hover {
+  background: var(--bg-light);
+}
 /* .section-title {
   background: #fafafa;
 } */

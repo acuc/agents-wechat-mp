@@ -13,6 +13,8 @@ export interface ReferralProduct {
   name: string
   description: string
   icon: string
+  /** Referral link URL to share or copy. If omitted, a placeholder is used. */
+  referralLink?: string
 }
 
 export interface PaymentTimelineEvent {

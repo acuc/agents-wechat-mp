@@ -159,6 +159,20 @@
   text-align: center;
 }
 
+.credentials-title.connect-enforced-messag-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.credentials-title.connect-enforced-message {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .credentials-panel-v2 input {
   width: 100%;
   border: 0.1rem solid #e0e0e3;
@@ -231,14 +245,19 @@
 
 .connect-back-link {
   display: block;
-  margin-top: 1.2rem;
+  margin: 24px auto 0;
   padding: 0;
   border: none;
   background: none;
-  font-size: 1.4rem;
-  color: var(--brand-blue);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #6b7280;
   cursor: pointer;
   text-align: center;
+}
+
+.connect-back-link:hover {
+  color: #4b5563;
 }
 
 .credentials-panel input {

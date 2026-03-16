@@ -148,6 +148,7 @@ export function PaymentsPage() {
           <PaymentListItem key={payment.id} payment={payment} />
         ))}
       </section>
+      <p className="payments-list-end">{t('payments.noMorePayments')}</p>
     </div>
   )
 }

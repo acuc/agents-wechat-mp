@@ -16,6 +16,7 @@ export function ConnectPage() {
   const [passwordError, setPasswordError] = useState('')
   const [credentialsError, setCredentialsError] = useState('')
   const [show2FA, setShow2FA] = useState(false)
+  const [showEnforced2FA, setShowEnforced2FA] = useState(false)
   const [twoFactorCode, setTwoFactorCode] = useState('')
   const [twoFactorError, setTwoFactorError] = useState('')
   const twoFAInputRefs = useRef<(HTMLInputElement | null)[]>([])
@@ -37,7 +38,7 @@ export function ConnectPage() {
       return
     }
     if (password.trim().toLowerCase() === 'enforced2fa') {
-      setCredentialsError(t('connect.enforced2faMessage'))
+      setShowEnforced2FA(true)
       return
     }
     if (password.trim().toLowerCase() === '2fa') {
@@ -142,6 +143,20 @@ export function ConnectPage() {
           <button type="button" className="primary-btn connect-submit" onClick={continueFlow}>
             {t('connect.scan')}
           </button>
+        </section>
+      ) : showEnforced2FA ? (
+        <section className="credentials-panel-v2">
+          <p className="credentials-title connect-enforced-message-title">{t('connect.enforced2faMessageTitle')}</p>
+          <p className="credentials-title connect-enforced-message">{t('connect.enforced2faMessage')}</p>
+          <div style={{ paddingTop: '1.2rem' }}>
+            <button
+              type="button"
+              className="connect-back-link"
+              onClick={() => setShowEnforced2FA(false)}
+            >
+              {t('connect.back')}
+            </button>
+          </div>
         </section>
       ) : show2FA ? (
         <section className="credentials-panel-v2">

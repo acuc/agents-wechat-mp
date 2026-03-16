@@ -109,3 +109,11 @@
 .link-payment-btn:hover {
   background: #ffecd6;
 }
+
+.payments-list-end {
+  margin: 0;
+  padding: 1.6rem 1.4rem;
+  font-size: 1.3rem;
+  color: var(--text-grey);
+  text-align: center;
+}
