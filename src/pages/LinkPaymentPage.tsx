@@ -97,36 +97,39 @@ export function LinkPaymentPage() {
   const showVerify = foundPayment && !searching && !linking && !linked
   const showLinking = foundPayment && linking
   const showLinked = foundPayment && linked
+  const hideAddPaymentSection = showVerify || showLinking || showLinked
 
   return (
     <div className="page link-payment-page" style={{paddingTop:'1.6rem'}}>
-      <section className="link-payment-card" style={{background:'var(--bg-light)'}}>
-        <h1 className="link-payment-page-title">{t('linkPayment.pageTitle')}</h1>
-        <p className="link-payment-card-instruction">{t('linkPayment.instruction')}</p>
-        <div
-          className={`link-payment-search-wrap${searchError ? ' link-payment-search-wrap--error' : ''}`}
-          style={{ backgroundColor: '#fff' }}
-        >
-          <Search size={18} className="link-payment-search-icon" aria-hidden />
-          <input
-            type="text"
-            className="link-payment-search-input"
+      {!hideAddPaymentSection && (
+        <section className="link-payment-card" style={{background:'var(--bg-light)'}}>
+          <h1 className="link-payment-page-title">{t('linkPayment.pageTitle')}</h1>
+          <p className="link-payment-card-instruction">{t('linkPayment.instruction')}</p>
+          <div
+            className={`link-payment-search-wrap${searchError ? ' link-payment-search-wrap--error' : ''}`}
             style={{ backgroundColor: '#fff' }}
-            placeholder={t('linkPayment.searchPlaceholder')}
-            value={paymentIdInput}
-            onChange={(e) => {
-              setPaymentIdInput(e.target.value)
-              setSearchError('')
-            }}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            aria-label="Payment ID"
-          />
-        </div>
-        {searchError && <p className="link-payment-search-error">{searchError}</p>}
-        <button type="button" className="link-payment-search-btn" onClick={handleSearch}>
-          {t('linkPayment.searchPayment')}
-        </button>
-      </section>
+          >
+            <Search size={18} className="link-payment-search-icon" aria-hidden />
+            <input
+              type="text"
+              className="link-payment-search-input"
+              style={{ backgroundColor: '#fff' }}
+              placeholder={t('linkPayment.searchPlaceholder')}
+              value={paymentIdInput}
+              onChange={(e) => {
+                setPaymentIdInput(e.target.value)
+                setSearchError('')
+              }}
+              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              aria-label="Payment ID"
+            />
+          </div>
+          {searchError && <p className="link-payment-search-error">{searchError}</p>}
+          <button type="button" className="link-payment-search-btn" onClick={handleSearch}>
+            {t('linkPayment.searchPayment')}
+          </button>
+        </section>
+      )}
 
       {showNotFound && (
         <section className="link-payment-card link-payment-linking-card link-payment-not-found-card">

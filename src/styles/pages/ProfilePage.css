@@ -12,8 +12,14 @@
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--text-dark);
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
 }
-.profile-menu .menu-item:last-of-type {
+.profile-menu a.menu-item:hover {
+  background: var(--bg-light);
+}
+.profile-menu .menu-item:last-child {
   border-bottom: none;
 }
 

@@ -1,29 +1,56 @@
 import { ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { IconGlyph } from '../common/IconGlyph'
 import { useTranslation } from '../../i18n/useTranslation'
 
-const items = [
-  { icon: 'CircleHelp' as const, labelKey: 'profile.helpCenter' as const },
-  { icon: 'Settings' as const, labelKey: 'profile.privacySecurity' as const },
-  { icon: 'Info' as const, labelKey: 'profile.about' as const, suffix: 'v1.0.0' },
+const linkItems = [
+  {
+    icon: 'CircleHelp' as const,
+    labelKey: 'profile.helpCenter' as const,
+    href: 'https://flywireagents.zendesk.com/',
+  },
+  {
+    icon: 'ShieldCheck' as const,
+    labelKey: 'profile.privacyPolicy' as const,
+    href: 'https://www.flywire.com/legal/privacy-policy',
+  },
+  {
+    icon: 'FileText' as const,
+    labelKey: 'profile.payerTermsOfUse' as const,
+    href: 'https://www.flywire.com/legal/terms-of-use',
+  },
 ]
 
 export function ProfileMenuList() {
   const { t } = useTranslation()
   return (
     <section className="card profile-menu">
-      {items.map((item) => (
-        <button className="menu-item" key={item.labelKey} type="button">
+      {linkItems.map((item) => (
+        <a
+          className="menu-item"
+          href={item.href}
+          key={item.labelKey}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           <div className="menu-left">
             <IconGlyph name={item.icon} size={18} />
             <span>{t(item.labelKey)}</span>
           </div>
           <div className="menu-right">
-            {item.suffix ? <span className="muted">{item.suffix}</span> : null}
             <ChevronRight size={16} />
           </div>
-        </button>
+        </a>
       ))}
+      <Link className="menu-item" to="/profile/about">
+        <div className="menu-left">
+          <IconGlyph name="Info" size={18} />
+          <span>{t('profile.about')}</span>
+        </div>
+        <div className="menu-right">
+          <ChevronRight size={16} />
+        </div>
+      </Link>
     </section>
   )
 }

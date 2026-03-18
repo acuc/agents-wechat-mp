@@ -53,6 +53,9 @@ function getAppBarConfig(
   if (pathname.startsWith('/payments/') && paymentId) {
     return { showLogo: false, titleKey: 'topBar.paymentDetails', showBack: true, backTo: '/payments' }
   }
+  if (pathname === '/profile/about') {
+    return { showLogo: false, titleKey: 'profile.about', showBack: true, backTo: '/profile' }
+  }
   if (pathname === '/profile') {
     return { showLogo: false, titleKey: 'topBar.profile', showBack: false, backTo: '/' }
   }

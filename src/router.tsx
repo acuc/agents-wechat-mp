@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage'
 import { LinkPaymentPage } from './pages/LinkPaymentPage'
 import { PaymentDetailsPage } from './pages/PaymentDetailsPage'
 import { PaymentsPage } from './pages/PaymentsPage'
+import { AboutPage } from './pages/AboutPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { SelectContactPage } from './pages/SelectContactPage'
 import { ShareLinkChatPage } from './pages/ShareLinkChatPage'
@@ -44,6 +45,7 @@ export function AppRouter() {
           <Route element={<LinkPaymentPage />} path="/payments/link" />
           <Route element={<PaymentDetailsPage />} path="/payments/:paymentId" />
           <Route element={<ProfilePage />} path="/profile" />
+          <Route element={<AboutPage />} path="/profile/about" />
         </Route>
         <Route element={<Navigate replace to="/connect" />} path="*" />
       </Routes>

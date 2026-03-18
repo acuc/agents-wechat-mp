@@ -1,0 +1,71 @@
+.about-page {
+  padding-top: 0.8rem;
+}
+
+.about-page-content {
+  padding: 1.6rem 1.4rem 2.4rem;
+  margin-top: 0;
+}
+
+.about-page-title {
+  margin: 0 0 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.35;
+}
+
+.about-page-intro {
+  margin: 0 0 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.about-page-list {
+  margin: 0 0 1.2rem;
+  padding-left: 1.6rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.about-page-list li {
+  margin-bottom: 1rem;
+}
+
+.about-page-list li:last-child {
+  margin-bottom: 0;
+}
+
+.about-page-list strong {
+  font-weight: 600;
+}
+
+.about-page-closing {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+/* Same gray text back control as Connect 2FA (.connect-back-link) */
+.about-page-content .connect-back-link {
+  display: block;
+  margin: 2.4rem auto 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #6b7280;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.about-page-content .connect-back-link:hover {
+  color: #4b5563;
+}

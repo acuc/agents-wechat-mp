@@ -26,9 +26,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'connect.step2': 'Go to "My Account"',
     'connect.step3': 'Scan the WeChat QR code displayed in the Agents Dashboard using your phone',
     'connect.signInTitle': 'Sign in using your Flywire Agents credentials',
-    'connect.username': 'Username',
+    'connect.username': 'Email',
     'connect.password': 'Password',
-    'connect.usernameRequired': 'Username is required',
+    'connect.usernameRequired': 'Email is required',
     'connect.passwordRequired': 'Password is required',
     'connect.invalidCredentials': 'Invalid credentials',
     'connect.enforced2faMessageTitle': 'Security Setup Required',
@@ -163,8 +163,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.wechatLinked': 'WeChat Linked',
     'profile.unbindLogout': 'Unbind & Log Out',
     'profile.helpCenter': 'Help Center',
-    'profile.privacySecurity': 'Privacy & Security',
+    'profile.privacyPolicy': 'Privacy Policy',
+    'profile.payerTermsOfUse': 'Payer Terms of Use',
     'profile.about': 'About',
+    'profile.aboutPageTitle': 'About the Flywire Partners Mini Program',
+    'profile.aboutPageIntro':
+      'This mini program is for Flywire education agents. After you sign in with your Flywire Agents credentials, you can:',
+    'profile.aboutPageShareHeading': 'Share referral links',
+    'profile.aboutPageShareBody':
+      'Send product links as WeChat cards or copy links to share elsewhere.',
+    'profile.aboutPagePaymentsHeading': 'Manage payments',
+    'profile.aboutPagePaymentsBody':
+      "View and search student payments you've linked to your account, and link new payments when students pay outside the usual flow.",
+    'profile.aboutPageClosing':
+      "It's designed to sit alongside the Flywire Agent Dashboard on the web: use the dashboard for full setup and administration, and this mini program when you're working with students on WeChat.",
   },
   zh: {
     'topBar.brand': 'Flywire Partners',
@@ -189,9 +201,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'connect.step2': '进入「我的账户」',
     'connect.step3': '使用手机扫描代理商控制台中显示的微信二维码',
     'connect.signInTitle': '使用您的 Flywire 代理商凭据登录',
-    'connect.username': '用户名',
+    'connect.username': '邮箱',
     'connect.password': '密码',
-    'connect.usernameRequired': '请输入用户名',
+    'connect.usernameRequired': '请输入邮箱',
     'connect.passwordRequired': '请输入密码',
     'connect.invalidCredentials': '凭据无效',
     'connect.enforced2faMessageTitle': '需要完成安全设置',
@@ -318,8 +330,19 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.wechatLinked': '微信已绑定',
     'profile.unbindLogout': '解绑并退出',
     'profile.helpCenter': '帮助中心',
-    'profile.privacySecurity': '隐私与安全',
+    'profile.privacyPolicy': '隐私政策',
+    'profile.payerTermsOfUse': '付款人使用条款',
     'profile.about': '关于',
+    'profile.aboutPageTitle': '关于 Flywire 合作伙伴小程序',
+    'profile.aboutPageIntro':
+      '本小程序面向 Flywire 教育代理商。使用 Flywire 代理商凭据登录后，您可以：',
+    'profile.aboutPageShareHeading': '分享推荐链接',
+    'profile.aboutPageShareBody': '以微信卡片形式发送产品链接，或复制链接在其他渠道分享。',
+    'profile.aboutPagePaymentsHeading': '管理付款',
+    'profile.aboutPagePaymentsBody':
+      '查看和搜索已关联到您账户的学生付款；当学生通过常规流程以外的方式付款时，还可关联新的付款。',
+    'profile.aboutPageClosing':
+      '本小程序与网页版 Flywire 代理商控制台互补：在控制台完成完整设置与管理；在与学生使用微信沟通时使用本小程序。',
   },
 }
 

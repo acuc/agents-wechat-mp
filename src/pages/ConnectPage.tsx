@@ -201,7 +201,8 @@ export function ConnectPage() {
               className={usernameError ? 'input-error' : ''}
               onChange={(e) => { setUsername(e.target.value); setCredentialsError('') }}
               placeholder={t('connect.username')}
-              type="text"
+              type="email"
+              autoComplete="email"
               value={username}
             />
             {usernameError ? <p className="field-error">{usernameError}</p> : null}
