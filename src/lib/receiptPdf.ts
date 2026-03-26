@@ -1,4 +1,6 @@
 import { jsPDF } from 'jspdf'
+import { currencyBeforeAmount } from './currencySymbol'
+import { paymentStudentEmail } from './studentEmail'
 import type { Payment } from '../types/domain'
 import { getTimelineSteps } from '../components/payments/paymentTimelineSteps'
 
@@ -65,7 +67,11 @@ export async function generatePaymentReceiptPdf(
   doc.setFontSize(11)
   doc.setFont('helvetica', 'normal')
   doc.setTextColor(80, 80, 80)
-  doc.text(`${payment.status} · ${formatAmount(payment.amountTo)} ${payment.amountToCurrency}`, MARGIN, y)
+  doc.text(
+    `${payment.status} · ${currencyBeforeAmount(payment.amountToCurrency)}${formatAmount(payment.amountTo)}`,
+    MARGIN,
+    y
+  )
   y += LINE_HEIGHT
   doc.text(payment.institution, MARGIN, y)
   y += LINE_HEIGHT + SECTION_GAP
@@ -80,9 +86,13 @@ export async function generatePaymentReceiptPdf(
   const details: Array<[string, string]> = [
     ['Payment ID', payment.id],
     ['Student name', payment.studentName],
+    ['Student email', paymentStudentEmail(payment)],
     ['Recipient', payment.institution],
-    ['Amount from', `${payment.amountFromValue.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${payment.amountFromCurrency}`],
-    ['Amount to', `${formatAmount(payment.amountTo)} ${payment.amountToCurrency}`],
+    [
+      'Amount from',
+      `${currencyBeforeAmount(payment.amountFromCurrency)}${payment.amountFromValue.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+    ],
+    ['Amount to', `${currencyBeforeAmount(payment.amountToCurrency)}${formatAmount(payment.amountTo)}`],
     ['Initiated date', payment.date],
     ['Added date', payment.addedDate],
     ['Linked via', payment.linkedVia],

@@ -7,7 +7,9 @@ import { useAppStore } from '../store/useAppStore'
 export function MobileShell() {
   const { pathname } = useLocation()
   const showTabs =
-    !pathname.startsWith('/payments/') && !pathname.startsWith('/share-link/chat')
+    !pathname.startsWith('/payments/') &&
+    !pathname.startsWith('/policies/') &&
+    !pathname.startsWith('/share-link/chat')
   const { shareSheetProduct, closeShareSheet } = useAppStore()
 
   return (

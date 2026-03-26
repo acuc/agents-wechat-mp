@@ -22,9 +22,10 @@ function StatusBar() {
 function getAppBarConfig(
   pathname: string,
   t: (key: string) => string,
-  opts?: { paymentId?: string; contactName?: string }
+  opts?: { paymentId?: string; policyId?: string; contactName?: string }
 ) {
   const paymentId = opts?.paymentId
+  const policyId = opts?.policyId
   const contactName = opts?.contactName
   if (pathname === '/home') {
     return { showLogo: true, titleKey: null, showBack: false, backTo: '/' }
@@ -53,6 +54,12 @@ function getAppBarConfig(
   if (pathname.startsWith('/payments/') && paymentId) {
     return { showLogo: false, titleKey: 'topBar.paymentDetails', showBack: true, backTo: '/payments' }
   }
+  if (pathname === '/policies') {
+    return { showLogo: false, titleKey: 'topBar.insurancePolicies', showBack: false, backTo: '/' }
+  }
+  if (pathname.startsWith('/policies/') && policyId) {
+    return { showLogo: false, titleKey: 'topBar.policyDetails', showBack: true, backTo: '/policies' }
+  }
   if (pathname === '/profile/about') {
     return { showLogo: false, titleKey: 'profile.about', showBack: true, backTo: '/profile' }
   }
@@ -64,10 +71,10 @@ function getAppBarConfig(
 
 export function MobileTopBar() {
   const { pathname, state } = useLocation()
-  const { paymentId } = useParams()
+  const { paymentId, policyId } = useParams()
   const { t } = useTranslation()
   const contactName = (state as { contact?: { name: string } } | null)?.contact?.name
-  const config = getAppBarConfig(pathname, t, { paymentId, contactName })
+  const config = getAppBarConfig(pathname, t, { paymentId, policyId, contactName })
   const { showLogo, titleKey, titleRaw, showBack, backTo } = config
   const title = titleRaw ?? (titleKey ? t(titleKey) : null)
 

@@ -6,6 +6,7 @@ const tabKeys = [
   { to: '/home', labelKey: 'tabs.home', icon: 'Home' as const },
   { to: '/share-link', labelKey: 'tabs.shareLink', icon: 'Share2' as const },
   { to: '/payments', labelKey: 'tabs.payments', icon: 'ListCheck' as const },
+  { to: '/policies', labelKey: 'tabs.insurancePolicies', icon: 'ShieldCheck' as const },
   { to: '/profile', labelKey: 'tabs.profile', icon: 'UserRound' as const },
 ]
 

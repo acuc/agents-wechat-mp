@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Loader2, Search, SearchAlert } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { currencyBeforeAmount } from '../lib/currencySymbol'
+import { displayStudentEmail } from '../lib/studentEmail'
 import { useTranslation } from '../i18n/useTranslation'
 import type { Payment } from '../types/domain'
 import { payments } from '../mocks/payments'
@@ -15,10 +17,7 @@ function formatAmount(amount: number): string {
 }
 
 function getStudentEmail(payment: Payment): string {
-  return (
-    payment.studentEmail ??
-    `${payment.studentName.toLowerCase().replace(/\s+/g, '.')}@example.com`
-  )
+  return displayStudentEmail(payment.studentName, payment.studentEmail)
 }
 
 export function LinkPaymentPage() {
@@ -159,16 +158,19 @@ export function LinkPaymentPage() {
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amount')}</span>
-              <span>{foundPayment.amountToCurrency} {formatAmount(foundPayment.amountTo)}</span>
+              <span>
+                {currencyBeforeAmount(foundPayment.amountToCurrency)}
+                {formatAmount(foundPayment.amountTo)}
+              </span>
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amountFrom')}</span>
               <span>
+                {currencyBeforeAmount(foundPayment.amountFromCurrency)}
                 {foundPayment.amountFromValue.toLocaleString('en-AU', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
-                })}{' '}
-                {foundPayment.amountFromCurrency}
+                })}
               </span>
             </div>
             <div className="link-payment-kv-row">
@@ -232,16 +234,19 @@ export function LinkPaymentPage() {
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amount')}</span>
-              <span>{foundPayment.amountToCurrency} {formatAmount(foundPayment.amountTo)}</span>
+              <span>
+                {currencyBeforeAmount(foundPayment.amountToCurrency)}
+                {formatAmount(foundPayment.amountTo)}
+              </span>
             </div>
             <div className="link-payment-kv-row">
               <span className="muted">{t('linkPayment.amountFrom')}</span>
               <span>
+                {currencyBeforeAmount(foundPayment.amountFromCurrency)}
                 {foundPayment.amountFromValue.toLocaleString('en-AU', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
-                })}{' '}
-                {foundPayment.amountFromCurrency}
+                })}
               </span>
             </div>
             <div className="link-payment-kv-row">

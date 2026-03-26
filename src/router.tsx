@@ -6,8 +6,10 @@ import { ConnectConnectedPage } from './pages/ConnectConnectedPage'
 import { ConnectPage } from './pages/ConnectPage'
 import { ConnectSigningInPage } from './pages/ConnectSigningInPage'
 import { HomePage } from './pages/HomePage'
+import { InsurancePoliciesPage } from './pages/InsurancePoliciesPage'
 import { LinkPaymentPage } from './pages/LinkPaymentPage'
 import { PaymentDetailsPage } from './pages/PaymentDetailsPage'
+import { PolicyDetailsPage } from './pages/PolicyDetailsPage'
 import { PaymentsPage } from './pages/PaymentsPage'
 import { AboutPage } from './pages/AboutPage'
 import { ProfilePage } from './pages/ProfilePage'
@@ -44,6 +46,8 @@ export function AppRouter() {
           <Route element={<PaymentsPage />} path="/payments" />
           <Route element={<LinkPaymentPage />} path="/payments/link" />
           <Route element={<PaymentDetailsPage />} path="/payments/:paymentId" />
+          <Route element={<InsurancePoliciesPage />} path="/policies" />
+          <Route element={<PolicyDetailsPage />} path="/policies/:policyId" />
           <Route element={<ProfilePage />} path="/profile" />
           <Route element={<AboutPage />} path="/profile/about" />
         </Route>

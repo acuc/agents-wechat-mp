@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { PaymentListItem } from '../components/payments/PaymentListItem'
+import { PolicyListItem } from '../components/policies/PolicyListItem'
+import { insurancePolicies } from '../mocks/policies'
 import { payments } from '../mocks/payments'
 import { IconGlyph } from '../components/common/IconGlyph'
 import { useTranslation } from '../i18n/useTranslation'
@@ -172,6 +174,18 @@ export function HomePage() {
           </div>
           <ChevronRight size={24} style={{ color: 'var(--text-dark)' }} />
         </Link>
+        <Link className="quick-link violet" to="/policies">
+          <div className="quick-link-left">
+            <div className="quick-link-icon violet">
+              <IconGlyph name="ShieldCheck" size={28} strokeWidth={2} />
+            </div>
+            <div className="quick-link-content">
+              <p className="quick-link-title">{t('home.insurancePolicies')}</p>
+              <p className="quick-link-description">{t('home.insurancePoliciesDesc')}</p>
+            </div>
+          </div>
+          <ChevronRight size={24} style={{ color: 'var(--text-dark)' }} />
+        </Link>
       </section>
 
       <section className="card recent-payments">
@@ -183,6 +197,20 @@ export function HomePage() {
         </div>
         {payments.slice(0, 3).map((payment) => (
           <PaymentListItem key={payment.id} payment={payment} />
+        ))}
+      </section>
+
+      <section className="card recent-payments">
+        <div className="row-between section-header recent-header">
+          <p className="section-title" style={{ margin: 0, padding: 0 }}>
+            {t('home.recentInsurancePolicies')}
+          </p>
+          <Link className="recent-link" to="/policies">
+            {t('home.viewAll')} <IconGlyph name="ArrowRight" size={16} />
+          </Link>
+        </div>
+        {insurancePolicies.slice(0, 3).map((policy) => (
+          <PolicyListItem key={policy.id} policy={policy} />
         ))}
       </section>
     </div>

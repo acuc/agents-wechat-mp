@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react'
-import { Download } from 'lucide-react'
+import { Download, Link2 } from 'lucide-react'
 import { useParams } from 'react-router-dom'
 import { PaymentTimeline } from '../components/payments/PaymentTimeline'
 import { generatePaymentReceiptPdf } from '../lib/receiptPdf'
 import { payments } from '../mocks/payments'
 import { useTranslation } from '../i18n/useTranslation'
+import { copyTextToClipboard } from '../lib/copyToClipboard'
+import { currencyBeforeAmount } from '../lib/currencySymbol'
+import { paymentStudentEmail } from '../lib/studentEmail'
 import type { PaymentStatus } from '../types/domain'
 import logoFull from '../assets/logo-full.svg'
 import '../styles/pages/PaymentDetailsPage.css'
@@ -46,13 +49,20 @@ export function PaymentDetailsPage() {
     // TODO: implement A2 form download
   }
 
+  function handleCopyTrackingLink() {
+    void copyTextToClipboard(payment.trackingLink)
+  }
+
   return (
     <div className="page">
       <section className="center summary">
         <span className={`status-pill status-${payment.status.toLowerCase().replace(' ', '-')}`} style={{ fontSize: '1.4rem', fontWeight:'500'}}>
           {t(statusToKey[payment.status])}
         </span>
-        <h2 style={{fontSize:'2.4rem', fontWeight:'500'}}>{formatAmountWithDecimals(payment.amountTo)} {payment.amountToCurrency}</h2>
+        <h2 style={{ fontSize: '2.4rem', fontWeight: '500' }}>
+          {currencyBeforeAmount(payment.amountToCurrency)}
+          {formatAmountWithDecimals(payment.amountTo)}
+        </h2>
         <p style={{fontSize:'1.8rem'}} className="muted">{payment.institution}</p>
         {payment.institutionAddress && (
           <p style={{fontSize:'1.4rem'}} className="muted">{payment.institutionAddress}</p>
@@ -70,16 +80,29 @@ export function PaymentDetailsPage() {
           <span>{payment.studentName}</span>
         </div>
         <div className="kv-row">
+          <span className="muted">{t('paymentDetails.studentEmail')}</span>
+          <span>{paymentStudentEmail(payment)}</span>
+        </div>
+        <div className="kv-row">
           <span className="muted">{t('paymentDetails.institution')}</span>
           <span>{payment.institution}</span>
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.amountFrom')}</span>
-          <span>{payment.amountFromValue.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {payment.amountFromCurrency}</span>
+          <span>
+            {currencyBeforeAmount(payment.amountFromCurrency)}
+            {payment.amountFromValue.toLocaleString('en-AU', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </span>
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.amountTo')}</span>
-          <span>{formatAmountWithDecimals(payment.amountTo)} {payment.amountToCurrency}</span>
+          <span>
+            {currencyBeforeAmount(payment.amountToCurrency)}
+            {formatAmountWithDecimals(payment.amountTo)}
+          </span>
         </div>
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.payerName')}</span>
@@ -108,14 +131,14 @@ export function PaymentDetailsPage() {
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.paymentTrackingLink')}</span>
           <span>
-            <a
-              href={payment.trackingLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               className="payment-tracking-link"
+              onClick={handleCopyTrackingLink}
             >
-              {t('paymentDetails.openTracking')}
-            </a>
+              <Link2 size={14} aria-hidden />
+              {t('paymentDetails.copyLink')}
+            </button>
           </span>
         </div>
         {payment.bestPriceGuaranteeApplied && (

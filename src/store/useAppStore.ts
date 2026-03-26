@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ConnectMethod, PaymentStatus, ReferralProduct } from '../types/domain'
+import type { ConnectMethod, PaymentStatus, PolicyStatus, ReferralProduct } from '../types/domain'
 import type { Locale } from '../i18n/translations'
 
 interface AppState {
@@ -18,6 +18,10 @@ interface AppState {
   closeShareSheet: () => void
   setPaymentSearch: (value: string) => void
   setPaymentFilter: (value: PaymentStatus | 'All') => void
+  policySearch: string
+  policyFilter: PolicyStatus | 'All'
+  setPolicySearch: (value: string) => void
+  setPolicyFilter: (value: PolicyStatus | 'All') => void
   logout: () => void
 }
 
@@ -37,6 +41,10 @@ export const useAppStore = create<AppState>((set) => ({
   closeShareSheet: () => set({ shareSheetProduct: null }),
   setPaymentSearch: (paymentSearch) => set({ paymentSearch }),
   setPaymentFilter: (paymentFilter) => set({ paymentFilter }),
+  policySearch: '',
+  policyFilter: 'All',
+  setPolicySearch: (policySearch) => set({ policySearch }),
+  setPolicyFilter: (policyFilter) => set({ policyFilter }),
   logout: () =>
     set({
       isConnected: false,
@@ -45,5 +53,7 @@ export const useAppStore = create<AppState>((set) => ({
       shareSheetProduct: null,
       paymentSearch: '',
       paymentFilter: 'All',
+      policySearch: '',
+      policyFilter: 'All',
     }),
 }))

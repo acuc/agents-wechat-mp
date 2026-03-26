@@ -136,10 +136,38 @@
   font-size: 1.4rem;
 }
 
+.payment-tracking-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #1274c4;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.payment-tracking-link:hover {
+  color: #0d5a9e;
+}
+
 .payment-details-btn-white {
   background: #fff !important;
   color: var(--text-dark);
   border: 0.1rem solid var(--line-grey);
+}
+
+.policy-details-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.policy-details-downloads .primary-btn {
+  width: 100%;
 }
 
 .payment-details-btn-white:hover {

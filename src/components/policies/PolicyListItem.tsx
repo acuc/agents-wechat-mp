@@ -2,15 +2,14 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import { currencyBeforeAmount } from '../../lib/currencySymbol'
-import type { Payment, PaymentStatus } from '../../types/domain'
+import type { InsurancePolicy, PolicyStatus } from '../../types/domain'
 import { useTranslation } from '../../i18n/useTranslation'
 
-const statusToKey: Record<PaymentStatus, string> = {
-  Delivered: 'payments.delivered',
-  Cancelled: 'payments.cancelled',
-  'On hold': 'payments.onHold',
-  Initiated: 'payments.initiated',
-  Guaranteed: 'payments.guaranteed',
+const statusToKey: Record<PolicyStatus, string> = {
+  Active: 'policies.statusActive',
+  Processing: 'policies.statusProcessing',
+  Unpaid: 'policies.statusUnpaid',
+  Cancelled: 'policies.statusCancelled',
 }
 
 function formatAmountWithDecimals(amount: number): ReactNode {
@@ -27,35 +26,34 @@ function formatAmountWithDecimals(amount: number): ReactNode {
 }
 
 interface Props {
-  payment: Payment
+  policy: InsurancePolicy
 }
 
-export function PaymentListItem({ payment }: Props) {
+export function PolicyListItem({ policy }: Props) {
   const { t } = useTranslation()
+  const statusClass = policy.status.toLowerCase()
   return (
-    <Link className="payment-item" to={`/payments/${payment.id}`}>
+    <Link className="payment-item" to={`/policies/${policy.id}`}>
       <div className="payment-item-grid">
         <div className="payment-item-main">
           <div className="payment-top">
-            <span className="muted date-xs">{payment.date}</span>
-            <span className={`status-pill status-${payment.status.toLowerCase().replace(' ', '-')}`}>
-              {t(statusToKey[payment.status])}
+            <span className="muted date-xs">
+              {policy.startDate} – {policy.endDate}
             </span>
+            <span className={`status-pill status-${statusClass}`}>{t(statusToKey[policy.status])}</span>
           </div>
           <div className="payment-main">
             <div className="payment-main-content">
-              <p className="payment-student">{payment.studentName}</p>
+              <p className="payment-student">{policy.studentName}</p>
               <p className="payment-amount">
-                {currencyBeforeAmount(payment.amountToCurrency)}
-                {formatAmountWithDecimals(payment.amountTo)}
+                {currencyBeforeAmount(policy.currency)}
+                {formatAmountWithDecimals(policy.amount)}
               </p>
-              
             </div>
             <div className="payment-secondary-content">
-              <p className="muted payment-inst">{payment.institution}</p>
-              <p className="muted payment-id">{payment.id}</p>
+              <p className="muted payment-inst">{policy.provider}</p>
+              <p className="muted payment-id">{policy.reference}</p>
             </div>
-            
           </div>
         </div>
         <div className="payment-chevron-wrap">

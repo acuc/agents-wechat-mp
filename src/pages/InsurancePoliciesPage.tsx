@@ -1,55 +1,50 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import '../styles/pages/PaymentsPage.css'
 import { IconGlyph } from '../components/common/IconGlyph'
-import { PaymentListItem } from '../components/payments/PaymentListItem'
-import { payments } from '../mocks/payments'
+import { PolicyListItem } from '../components/policies/PolicyListItem'
+import { insurancePolicies } from '../mocks/policies'
 import { useAppStore } from '../store/useAppStore'
-import { paymentStudentEmail } from '../lib/studentEmail'
 import { useTranslation } from '../i18n/useTranslation'
-import type { PaymentStatus } from '../types/domain'
+import type { PolicyStatus } from '../types/domain'
 
-const secondSlotOptions: PaymentStatus[] = ['Delivered', 'Cancelled', 'On hold']
+const secondSlotOptions: PolicyStatus[] = ['Unpaid', 'Cancelled']
 
-const statusToKey: Record<PaymentStatus | 'All', string> = {
-  All: 'payments.all',
-  Delivered: 'payments.delivered',
-  Cancelled: 'payments.cancelled',
-  'On hold': 'payments.onHold',
-  Initiated: 'payments.initiated',
-  Guaranteed: 'payments.guaranteed',
+const statusToKey: Record<PolicyStatus | 'All', string> = {
+  All: 'policies.all',
+  Active: 'policies.active',
+  Processing: 'policies.processing',
+  Unpaid: 'policies.unpaid',
+  Cancelled: 'policies.cancelled',
 }
 
-export function PaymentsPage() {
-  const navigate = useNavigate()
+export function InsurancePoliciesPage() {
   const { t } = useTranslation()
-  const { paymentFilter, setPaymentFilter, paymentSearch, setPaymentSearch } = useAppStore()
+  const { policyFilter, setPolicyFilter, policySearch, setPolicySearch } = useAppStore()
   const [popoverOpen, setPopoverOpen] = useState(false)
   const popoverRef = useRef<HTMLDivElement>(null)
   const moreButtonRef = useRef<HTMLButtonElement>(null)
 
-  const secondSlot: PaymentStatus =
-    paymentFilter === 'Cancelled' || paymentFilter === 'On hold'
-      ? paymentFilter
-      : 'Delivered'
+  const secondSlot: PolicyStatus =
+    policyFilter === 'Unpaid' || policyFilter === 'Cancelled' ? policyFilter : 'Unpaid'
 
-  const visibleFilters: Array<PaymentStatus | 'All'> = [
+  const visibleFilters: Array<PolicyStatus | 'All'> = [
     'All',
+    'Active',
+    'Processing',
     secondSlot,
-    'Initiated',
-    'Guaranteed',
   ]
 
   const popoverFilters = secondSlotOptions.filter((f) => f !== secondSlot)
 
-  const filtered = payments.filter((payment) => {
-    const inFilter = paymentFilter === 'All' ? true : payment.status === paymentFilter
-    const term = paymentSearch.toLowerCase()
+  const filtered = insurancePolicies.filter((policy) => {
+    const inFilter = policyFilter === 'All' ? true : policy.status === policyFilter
+    const term = policySearch.toLowerCase()
     const inSearch =
-      payment.studentName.toLowerCase().includes(term) ||
-      paymentStudentEmail(payment).toLowerCase().includes(term) ||
-      payment.institution.toLowerCase().includes(term) ||
-      payment.id.toLowerCase().includes(term)
+      policy.studentName.toLowerCase().includes(term) ||
+      policy.studentEmail.toLowerCase().includes(term) ||
+      policy.provider.toLowerCase().includes(term) ||
+      policy.reference.toLowerCase().includes(term) ||
+      policy.id.toLowerCase().includes(term)
     return inFilter && inSearch
   })
 
@@ -57,8 +52,8 @@ export function PaymentsPage() {
     setPopoverOpen((open) => !open)
   }
 
-  const handlePopoverFilter = (filter: PaymentStatus) => {
-    setPaymentFilter(filter)
+  const handlePopoverFilter = (filter: PolicyStatus) => {
+    setPolicyFilter(filter)
     setPopoverOpen(false)
   }
 
@@ -69,7 +64,8 @@ export function PaymentsPage() {
       if (
         popoverRef.current?.contains(target) ||
         moreButtonRef.current?.contains(target)
-      ) return
+      )
+        return
       setPopoverOpen(false)
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -85,9 +81,9 @@ export function PaymentsPage() {
       <div className="search-row">
         <IconGlyph name="Search" size={16} />
         <input
-          onChange={(e) => setPaymentSearch(e.target.value)}
-          placeholder={t('payments.searchPlaceholder')}
-          value={paymentSearch}
+          onChange={(e) => setPolicySearch(e.target.value)}
+          placeholder={t('policies.searchPlaceholder')}
+          value={policySearch}
         />
       </div>
       <div className="filter-row-wrap">
@@ -95,9 +91,9 @@ export function PaymentsPage() {
           <div className="filter-row-scroll">
             {visibleFilters.map((filter) => (
               <button
-                className={paymentFilter === filter ? 'active' : ''}
+                className={policyFilter === filter ? 'active' : ''}
                 key={filter}
-                onClick={() => setPaymentFilter(filter)}
+                onClick={() => setPolicyFilter(filter)}
                 type="button"
               >
                 {t(statusToKey[filter])}
@@ -111,7 +107,7 @@ export function PaymentsPage() {
             onClick={handleMoreClick}
             aria-expanded={popoverOpen}
             aria-haspopup="true"
-            aria-label={t('payments.moreFilters')}
+            aria-label={t('policies.moreFilters')}
           >
             <IconGlyph name="EllipsisVertical" size={16} />
           </button>
@@ -128,7 +124,7 @@ export function PaymentsPage() {
                 key={filter}
                 type="button"
                 role="menuitem"
-                className={paymentFilter === filter ? 'active' : ''}
+                className={policyFilter === filter ? 'active' : ''}
                 onClick={() => handlePopoverFilter(filter)}
               >
                 {t(statusToKey[filter])}
@@ -137,20 +133,12 @@ export function PaymentsPage() {
           </div>
         ) : null}
       </div>
-      <button
-        className="link-payment-btn" style={{border:'none'}}
-        type="button"
-        onClick={() => navigate('/payments/link')}
-      >
-        <IconGlyph name="Link" size={16} />
-        {t('payments.linkPayment')}
-      </button>
       <section className="card">
-        {filtered.map((payment) => (
-          <PaymentListItem key={payment.id} payment={payment} />
+        {filtered.map((policy) => (
+          <PolicyListItem key={policy.id} policy={policy} />
         ))}
       </section>
-      <p className="payments-list-end">{t('payments.noMorePayments')}</p>
+      <p className="payments-list-end">{t('policies.noMorePolicies')}</p>
     </div>
   )
 }

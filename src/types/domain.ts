@@ -7,6 +7,36 @@ export type PaymentStatus =
   | 'On hold'
   | 'Cancelled'
 
+export type PolicyStatus = 'Active' | 'Processing' | 'Unpaid' | 'Cancelled'
+
+export type InsuranceProviderName =
+  | 'AHM - OSHC'
+  | 'Allianz Care Australia - OSHC'
+  | 'NIB - OSHC'
+  | 'CBHS - OSHC'
+  | 'Medibank - OSHC'
+
+export interface InsurancePolicy {
+  id: string
+  reference: string
+  studentName: string
+  studentEmail: string
+  provider: InsuranceProviderName
+  amount: number
+  currency: string
+  startDate: string
+  endDate: string
+  /** Date the policy was requested (display format, e.g. "3 Dec 2024") */
+  requestedOn: string
+  agentName: string
+  agentEmail: string
+  /** Present for Active policies: URL to extend cover */
+  extensionLink?: string
+  /** Present for Active policies: URL to request cancellation */
+  cancellationLink?: string
+  status: PolicyStatus
+}
+
 
 export interface ReferralProduct {
   id: string
