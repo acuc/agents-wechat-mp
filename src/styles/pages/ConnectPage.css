@@ -16,9 +16,19 @@
 }
 
 .connect-page {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100%;
+}
+
+.connect-page-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   gap: 1.4rem;
-  align-content: start;
+  align-items: stretch;
+  min-height: 0;
 }
 
 .login-flow-page {
@@ -29,7 +39,7 @@
 
 .login-lang-wrap {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .login-subtitle {

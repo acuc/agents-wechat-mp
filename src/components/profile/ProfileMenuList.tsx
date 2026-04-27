@@ -16,8 +16,8 @@ const linkItems = [
   },
   {
     icon: 'FileText' as const,
-    labelKey: 'profile.payerTermsOfUse' as const,
-    href: 'https://www.flywire.com/legal/terms-of-use',
+    labelKey: 'profile.agentsTermsOfUse' as const,
+    href: 'https://www.flywire.com/legal/agents-terms-of-use',
   },
 ]
 

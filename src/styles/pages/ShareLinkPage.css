@@ -44,7 +44,6 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
 }
 
 .product-name {
@@ -52,14 +51,6 @@
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--text-dark);
-}
-
-.product-copy .muted {
-  margin: 0;
-  font-size: 1.2rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* Sheet is rendered inside .mobile-app so overlay is contained within the app/phone bounds */
@@ -91,8 +82,7 @@
   width: 100%;
   background: #fff;
   border-radius: 1.6rem 1.6rem 0 0;
-  padding: 0 1.4rem 3.2rem;
-  padding-top: 0.8rem;
+  padding: 0.35rem 1.4rem 3.2rem;
   transform: translateY(100%);
   transition: transform 0.28s ease-out;
 }
@@ -110,39 +100,29 @@
   height: 0.4rem;
   border-radius: 0.2rem;
   background: var(--line-grey);
-  margin: 0 auto 1.2rem;
+  margin: 0 auto 0.5rem;
   flex-shrink: 0;
 }
 
 .sheet-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.8rem;
 }
 
-.sheet-header h3 {
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.sheet-card {
-  border: 0.1rem solid var(--line-grey);
-  border-radius: 0.8rem;
-  padding: 1.2rem;
-  margin: 0 0 1.2rem;
+/* Preview sheet body: icon + title + description (no card chrome) */
+.share-sheet-preview {
   display: flex;
   align-items: flex-start;
   gap: 1.6rem;
-  background:var(--bg-light);
+  margin: 0 0 1.6rem;
 }
 
-.sheet-card-icon {
+.share-sheet-preview-icon {
   width: 4.8rem;
   height: 4.8rem;
-  padding:0.4rem;
+  padding: 0.4rem;
   border-radius: 0.4rem;
   background: var(--bg-light);
   display: grid;
@@ -150,46 +130,32 @@
   flex-shrink: 0;
 }
 
-.sheet-card-icon img {
+.share-sheet-preview-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
 }
 
-.sheet-card-copy {
+.share-sheet-preview-text {
   flex: 1;
   min-width: 0;
 }
 
-.sheet-card-copy .sheet-card-name {
-  margin: 0 0 0.4rem;
-  font-size: 1.6rem;
+.share-sheet-preview-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--text-dark);
+  line-height: 1.25;
 }
 
-.sheet-card-copy .sheet-card-desc {
+.share-sheet-preview-desc {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
   color: var(--text-grey);
-  line-height: 1.35;
-}
-
-.sheet-card-copy .sheet-card-agent {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1.6rem 0 0;
-  font-size: 1.2rem;
-  color: var(--text-grey);
-}
-
-.sheet-card-copy .sheet-card-agent-mark {
-  width: 1.4rem;
-  height: 2rem;
-  object-fit: contain;
-  flex-shrink: 0;
+  line-height: 1.5;
 }
 
 .share-sheet .primary-btn {

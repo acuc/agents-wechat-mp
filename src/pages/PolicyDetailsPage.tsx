@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react'
-import { Download, Link2 } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { useParams } from 'react-router-dom'
+import { LinkViewCopyActions } from '../components/common/LinkViewCopyActions'
 import { generatePolicyPdf, generatePolicyReceiptPdf } from '../lib/policyPdf'
 import { insurancePolicies } from '../mocks/policies'
 import { useTranslation } from '../i18n/useTranslation'
-import { copyTextToClipboard } from '../lib/copyToClipboard'
 import { currencyBeforeAmount } from '../lib/currencySymbol'
 import type { PolicyStatus } from '../types/domain'
 import logoFull from '../assets/logo-full.svg'
@@ -48,14 +48,6 @@ export function PolicyDetailsPage() {
 
   async function handleDownloadReceipt() {
     openPdfBlob(await generatePolicyReceiptPdf(policy, logoFull))
-  }
-
-  function handleCopyExtensionLink() {
-    if (policy.extensionLink) void copyTextToClipboard(policy.extensionLink)
-  }
-
-  function handleCopyCancellationLink() {
-    if (policy.cancellationLink) void copyTextToClipboard(policy.cancellationLink)
   }
 
   const statusClass = policy.status.toLowerCase()
@@ -129,27 +121,13 @@ export function PolicyDetailsPage() {
             <div className="kv-row">
               <span className="muted">{t('policyDetails.extensionLink')}</span>
               <span>
-                <button
-                  type="button"
-                  className="payment-tracking-link"
-                  onClick={handleCopyExtensionLink}
-                >
-                  <Link2 size={14} aria-hidden />
-                  {t('paymentDetails.copyLink')}
-                </button>
+                <LinkViewCopyActions url={policy.extensionLink as string} />
               </span>
             </div>
             <div className="kv-row">
               <span className="muted">{t('policyDetails.cancellationLink')}</span>
               <span>
-                <button
-                  type="button"
-                  className="payment-tracking-link"
-                  onClick={handleCopyCancellationLink}
-                >
-                  <Link2 size={14} aria-hidden />
-                  {t('paymentDetails.copyLink')}
-                </button>
+                <LinkViewCopyActions url={policy.cancellationLink as string} />
               </span>
             </div>
           </>

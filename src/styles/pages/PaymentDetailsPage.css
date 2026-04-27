@@ -136,6 +136,14 @@
   font-size: 1.4rem;
 }
 
+.payment-link-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .payment-tracking-link {
   display: inline-flex;
   align-items: center;

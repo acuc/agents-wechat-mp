@@ -13,13 +13,9 @@ export function AboutPage() {
         <ul className="about-page-list">
           <li>
             <strong>{t('profile.aboutPageShareHeading')}</strong>
-            {' – '}
-            {t('profile.aboutPageShareBody')}
           </li>
           <li>
             <strong>{t('profile.aboutPagePaymentsHeading')}</strong>
-            {' – '}
-            {t('profile.aboutPagePaymentsBody')}
           </li>
         </ul>
         <p className="about-page-closing">{t('profile.aboutPageClosing')}</p>

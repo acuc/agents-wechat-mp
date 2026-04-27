@@ -39,7 +39,6 @@ export function ShareLinkPage() {
             </div>
             <div className="product-copy">
               <p className="product-name">{t(`shareLink.product.${product.id}.name`) || product.name}</p>
-              <p className="muted">{t(`shareLink.product.${product.id}.description`) || product.description}</p>
             </div>
             <ChevronRight size={18} />
           </button>

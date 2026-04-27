@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react'
-import { Download, Link2 } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { useParams } from 'react-router-dom'
+import { LinkViewCopyActions } from '../components/common/LinkViewCopyActions'
 import { PaymentTimeline } from '../components/payments/PaymentTimeline'
 import { generatePaymentReceiptPdf } from '../lib/receiptPdf'
 import { payments } from '../mocks/payments'
 import { useTranslation } from '../i18n/useTranslation'
-import { copyTextToClipboard } from '../lib/copyToClipboard'
 import { currencyBeforeAmount } from '../lib/currencySymbol'
 import { paymentStudentEmail } from '../lib/studentEmail'
 import type { PaymentStatus } from '../types/domain'
@@ -47,10 +47,6 @@ export function PaymentDetailsPage() {
 
   function handleDownloadA2Form() {
     // TODO: implement A2 form download
-  }
-
-  function handleCopyTrackingLink() {
-    void copyTextToClipboard(payment.trackingLink)
   }
 
   return (
@@ -131,14 +127,7 @@ export function PaymentDetailsPage() {
         <div className="kv-row">
           <span className="muted">{t('paymentDetails.paymentTrackingLink')}</span>
           <span>
-            <button
-              type="button"
-              className="payment-tracking-link"
-              onClick={handleCopyTrackingLink}
-            >
-              <Link2 size={14} aria-hidden />
-              {t('paymentDetails.copyLink')}
-            </button>
+            <LinkViewCopyActions url={payment.trackingLink} />
           </span>
         </div>
         {payment.bestPriceGuaranteeApplied && (

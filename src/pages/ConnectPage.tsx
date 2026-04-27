@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import '../styles/components/LegalDisclaimerFooter.css'
 import '../styles/pages/ConnectPage.css'
 import { useState, useRef } from 'react'
 import { useAppStore } from '../store/useAppStore'
@@ -96,6 +97,7 @@ export function ConnectPage() {
     <main
       className="page app-scroll connect-page login-flow-page"
     >
+      <div className="connect-page-body">
       <div className="login-lang-wrap">
         <LanguageSwitch />
       </div>
@@ -223,6 +225,10 @@ export function ConnectPage() {
           </button>
         </section>
       )}
+      </div>
+      <footer className="legal-disclaimer-footer" role="note">
+        <p>{t('connect.disclaimerFooter')}</p>
+      </footer>
     </main>
   )
 }

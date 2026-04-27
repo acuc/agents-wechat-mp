@@ -16,6 +16,7 @@ import { ProfilePage } from './pages/ProfilePage'
 import { SelectContactPage } from './pages/SelectContactPage'
 import { ShareLinkChatPage } from './pages/ShareLinkChatPage'
 import { ShareLinkPage } from './pages/ShareLinkPage'
+import { ShareLinkWebviewPage } from './pages/ShareLinkWebviewPage'
 import { useAppStore } from './store/useAppStore'
 
 function AppGuard({ children }: { children: ReactElement }) {
@@ -43,6 +44,7 @@ export function AppRouter() {
           <Route element={<ShareLinkPage />} path="/share-link" />
           <Route element={<SelectContactPage />} path="/share-link/select-contact" />
           <Route element={<ShareLinkChatPage />} path="/share-link/chat" />
+          <Route element={<ShareLinkWebviewPage />} path="/share-link/webview" />
           <Route element={<PaymentsPage />} path="/payments" />
           <Route element={<LinkPaymentPage />} path="/payments/link" />
           <Route element={<PaymentDetailsPage />} path="/payments/:paymentId" />

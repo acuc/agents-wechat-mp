@@ -22,7 +22,12 @@ function StatusBar() {
 function getAppBarConfig(
   pathname: string,
   t: (key: string) => string,
-  opts?: { paymentId?: string; policyId?: string; contactName?: string }
+  opts?: {
+    paymentId?: string
+    policyId?: string
+    contactName?: string
+    webviewReturnTo?: string
+  }
 ) {
   const paymentId = opts?.paymentId
   const policyId = opts?.policyId
@@ -44,6 +49,10 @@ function getAppBarConfig(
       showBack: true,
       backTo: '/share-link/select-contact',
     }
+  }
+  if (pathname === '/share-link/webview') {
+    const backTo = opts?.webviewReturnTo ?? '/share-link'
+    return { showLogo: false, titleKey: 'topBar.referralWebview', showBack: true, backTo }
   }
   if (pathname === '/payments') {
     return { showLogo: false, titleKey: 'topBar.payments', showBack: false, backTo: '/' }
@@ -71,10 +80,19 @@ function getAppBarConfig(
 
 export function MobileTopBar() {
   const { pathname, state } = useLocation()
+  const webviewReturnTo =
+    pathname === '/share-link/webview'
+      ? ((state as { returnTo?: string } | null)?.returnTo ?? '/share-link')
+      : undefined
   const { paymentId, policyId } = useParams()
   const { t } = useTranslation()
   const contactName = (state as { contact?: { name: string } } | null)?.contact?.name
-  const config = getAppBarConfig(pathname, t, { paymentId, policyId, contactName })
+  const config = getAppBarConfig(pathname, t, {
+    paymentId,
+    policyId,
+    contactName,
+    webviewReturnTo,
+  })
   const { showLogo, titleKey, titleRaw, showBack, backTo } = config
   const title = titleRaw ?? (titleKey ? t(titleKey) : null)
 

@@ -9,7 +9,8 @@ export function MobileShell() {
   const showTabs =
     !pathname.startsWith('/payments/') &&
     !pathname.startsWith('/policies/') &&
-    !pathname.startsWith('/share-link/chat')
+    !pathname.startsWith('/share-link/chat') &&
+    pathname !== '/share-link/webview'
   const { shareSheetProduct, closeShareSheet } = useAppStore()
 
   return (

@@ -1,0 +1,14 @@
+.legal-disclaimer-footer {
+  flex-shrink: 0;
+  margin-top: 2.4rem;
+  padding: 1.2rem 0 1.6rem;
+  border-top: 0.1rem solid var(--line-grey);
+}
+
+.legal-disclaimer-footer p {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--text-grey);
+  text-align: center;
+}
